@@ -9,7 +9,38 @@
 <body>
     <div class="container">
         <div class="artwork">
-            <img src="BvgAmfNCEAE0F8B-666x418.jpg" alt="Artwork Image">
+            <div class="image-container">
+                <img src="BvgAmfNCEAE0F8B-666x418.jpg" alt="Artwork Image" id="fullscreen-image"> 
+                <script>
+                    document.getElementById('fullscreen-image').addEventListener('click', toggleFullScreen);
+
+                    function toggleFullScreen() {
+                         const element = document.getElementById('fullscreen-image');
+
+                         if (!document.fullscreenElement) {
+                             if (element.requestFullscreen) {
+                                 element.requestFullscreen();
+                            } else if (element.mozRequestFullScreen) {
+                                  element.mozRequestFullScreen();
+                            } else if (element.webkitRequestFullscreen) {
+                                 element.webkitRequestFullscreen();
+                            } else if (element.msRequestFullscreen) {
+                                 element.msRequestFullscreen();
+                            }   
+                        } else {
+                             if (document.exitFullscreen) {
+                                  document.exitFullscreen();
+                            } else if (document.mozCancelFullScreen) {
+                                 document.mozCancelFullScreen();
+                            } else if (document.webkitExitFullscreen) {
+                                 document.webkitExitFullscreen();
+                            } else if (document.msExitFullscreen) {
+                                 document.msExitFullscreen();
+                            }
+                        }
+                    }
+                </script>
+            </div>
         </div>
         <div class="info">
             <h1>Title of the photo</h1>
@@ -40,11 +71,17 @@
         </div>
         <div class="aboutsection">
             <p>this is a short parahraph where we're gonna put things about the artist.this is a short parahraph where we're gonna put things about the artist.this is a short parahraph where we're gonna put things about the artist.this is a short parahraph where we're gonna put things about the artist.<br><b><a href="#" target="_blank">see more(if there is an artist page)</a> </b></p>
+            <br>
         </div>
         
     </div>
     <div class="container2">
-        
+        <h3>Other listings from name of the artist:</h3>
+        <div class="first" style="padding-left: 190px;padding-right: 0px;"><a href="#" target="_blank"><img src="Nychos-Chemistry1.jpg"></a></div>
+        <div class="second" style="padding-left: 0px;"><a href="#" target="_blank"><img src="HD-wallpaper-pencil-drawing-art-cool-pencil-people-flowers-drawings.jpg"></a></div>
+        <div class="third"><a href="#" target="_blank"><img src="pencil-drawings-of-animals-1200x900.jpg"></a></div>
+        <div class="four" style="padding-right: 100px;"><a href="#" target="_blank"><img src="9f9b789ab0950e0a3acead1edbae1d70.jpg"></a></div>
+
     </div>
 </body>
 </html>
