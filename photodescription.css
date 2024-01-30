@@ -15,11 +15,38 @@ body {
 .container1 {
     display: grid;
     grid-template-columns: 30% 70%;
-    grid-template-rows: 400px;
+    grid-template-rows: 400px ;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: rgb(208, 205, 205);
+    background-color: rgb(242, 240, 240,0.6);
+}
+.container2 {
+    display: grid;
+    grid-template-columns:100%;
+    grid-template-rows: 150px ;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgb(242, 240, 240,0.6);
+}
+.container1 h1{
+    font-family:cursive;
+    font-size: 20px;
+    padding-left: 60px;
+}
+.aboutsection{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    font-family: cursive;
+    font-style: italic;
+    font-size: 20px;
+}
+a:hover {
+    color: grey;
+}
+.aboutsection a{
+    padding:15px;
 }
 
 .artwork {
@@ -90,11 +117,12 @@ h1 {
     height: 40px;
 }
 .buttons button:hover {
-    background-color:rgb(255, 70, 70);
+    background-color: rgb(112, 9, 9);
     color: black;
 }
 .artist{
     grid-column: 1/2;
+    grid-row: 1/2;
 
 }
 .artist img{
