@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer Example</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
+
     <footer style="background: white; padding: 20px; text-align: left; font-family: 'Arial', sans-serif;">
 
         <div style="display: flex; justify-content: space-around; color: #808080;">
@@ -49,5 +41,4 @@
             <div style="background: rgb(164, 7, 7); height: 30px; display: flex; align-items: center; justify-content: center;"><p>&copy; 2024 MuseMingle</p></div>
         </div>
     </footer>
-</body>
-</html>
+
