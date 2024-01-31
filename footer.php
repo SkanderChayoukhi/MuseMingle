@@ -4,14 +4,14 @@
         <div style="display: flex; justify-content: space-around; color: #808080;">
             <div style="width: 30%;">
                 <h3 style="color: rgb(164, 7, 7)">About Us</h3>
-                <p>MuseMingle, our platform dedicated to the celebration of art, serves as a captivating showcase for talented artists. Whether it's the mesmerizing lens of photography or the strokes of a painter's brush, we are confident that you'll discover the missing piece with us. Feel free to explore our diverse collection and immerse yourself in the world of creativity.</p>
+                <p style="color: black;">MuseMingle, our platform dedicated to the celebration of art, serves as a captivating showcase for talented artists. Whether it's the mesmerizing lens of photography or the strokes of a painter's brush, we are confident that you'll discover the missing piece with us. Feel free to explore our diverse collection and immerse yourself in the world of creativity.</p>
             </div>
             <div>
                 <h3 style="color: rgb(164, 7, 7)">Useful Links</h3>
                 <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li><a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#d3d3d3'">Link 1</a></li>
-                    <li><a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#d3d3d3'">Link 2</a></li>
-                    <li><a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#d3d3d3'">Link 3</a></li>
+                    <li><a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#d3d3d3'">Home</a></li>
+                    <li><a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#d3d3d3'">Gallery</a></li>
+                    <li><a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#d3d3d3'">Artists</a></li>
                 </ul>
             </div>
             <div style="text-align: center;">
@@ -31,13 +31,7 @@
         </div>
 
         <div style="margin-top: 5px; color: #d3d3d3; text-align: center;">
-            <nav>
-                <a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#808080'">Home</a>  |
-                <a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#808080'">Gallery</a>  |
-                <a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#808080'">Artists</a>  |
-                <a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#808080'">Add</a>  |
-                <a href="#" style="color: #808080; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='rgb(164, 7, 7)'" onmouseout="this.style.color='#808080'">Games</a>  
-            </nav>
+            
             <div style="background: rgb(164, 7, 7); height: 30px; display: flex; align-items: center; justify-content: center;"><p>&copy; 2024 MuseMingle</p></div>
         </div>
     </footer>
