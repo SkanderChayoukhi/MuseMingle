@@ -1,0 +1,228 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 1.3vw 8vw;
+    align-items: center;
+    box-shadow: 2px 2px 10px  black;
+    background-color: white;
+    width: 100%;
+    position: fixed;
+    z-index: 999;/*TRES INTERRESSANT POUR QUE LE NAV BAR RESTE TJRS EN DESSUS QUAND ON SLIDE UP OR DOWN*/
+}
+nav img{
+    width: 130px;
+    cursor: pointer;
+}
+nav .navigation ul{
+    display: flex;
+    justify-content: flex-end;
+}
+nav .navigation ul li{
+    list-style: none;
+    margin-left: 30px;
+}
+nav .navigation ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    font-weight: 500 ;
+    transition: 0.3s ease;
+}
+nav .navigation ul li select{
+    background-color: white;
+    border: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 500 ;
+    cursor: pointer;
+}
+nav .navigation ul li a:hover{
+    color: rgb(164, 7, 7);
+}
+nav .navigation ul li a.active{
+    color: rgb(164, 7, 7);
+}
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+#fullscreen-image {
+    cursor: pointer;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+.container1 {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 350px ;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgb(242, 240, 240,0.6);
+}
+.container2 {
+    display: grid;
+    grid: template columns 25% 25% 25% 25%;
+    grid-template-rows:20px 300px ;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgb(242, 240, 240,0.6);
+}
+.container1 h1{
+    font-family:cursive;
+    font-style: oblique ;
+    font-size: 20px;
+    padding-left: 60px;
+}
+.aboutsection{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    font-family: cursive;
+    font-style: italic;
+    font-size: 20px;
+}
+a:hover {
+    color: grey;
+}
+.aboutsection a{
+    padding:15px;
+}
+
+.artwork {
+    grid-column: 1/2 ;
+    padding: 60px;  
+}
+
+.artwork img {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    
+}
+
+.info {
+    grid-column: 2/3;
+    width: 50%;
+    padding-bottom: 100px;
+    padding-left: 20%;
+}
+h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+
+.small-text {
+    font-size: 20px;
+    color: rgb(92, 88, 88);
+    font-family:cursive;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.details {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.details li {
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: rgb(92, 88, 88);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.buttons button {
+    background-color: rgb(164, 7, 7);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 500px;
+    height: 40px;
+}
+.buttons button:hover {
+    background-color: rgb(112, 9, 9);
+    color: black;
+}
+.artist{
+    grid-column: 1/2;
+    grid-row: 1/2;
+
+}
+.artist img{
+    padding: 20px;
+    border-radius: 50%;
+    width:300px;
+    height: 300px;
+
+}
+.first{
+    grid-column: 1/2;
+    grid-row: 2/3;
+
+}
+.container2 img{
+   
+    height: 250px;
+    width: 250px;
+}
+.container2 img:hover{
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+  
+}
+.second{
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+.third{
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+.four{
+    grid-column: 4/5;
+    grid-row: 2/3;
+}
+.container2 h3{
+    padding-left: 100px;
+    font-style: italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.aboutsection p{
+    padding-top: 70px;
+}
