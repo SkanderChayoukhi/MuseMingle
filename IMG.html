@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork Page</title>
+    <link rel="stylesheet" href="photodescription.css">
+</head>
+<body>
+    <nav>
+        <img src="images/logo.png" alt="">
+        <div class="navigation" style="padding-right: 200px;">
+            <ul>
+                <li><a class="active" href="#">Home</a></li>
+                <li><a href="">Artists</a></li>
+                <li><select name="shop" id="">
+                    <option value="drawing" >Drawings</option>
+                    <option value="photography">Photography</option>
+                    <option value="painting">Paintings</option>
+                </select></li>
+                <li><a  href="">Contact us</a></li>
+                <li><a  href="">games</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" style="padding-top: 100px;">
+        <div class="artwork">
+            <div class="image-container">
+                <img src="images/BvgAmfNCEAE0F8B-666x418.jpg" alt="Artwork Image" id="fullscreen-image"> 
+                <script>
+                    document.getElementById('fullscreen-image').addEventListener('click', toggleFullScreen);
+
+                    function toggleFullScreen() {
+                         const element = document.getElementById('fullscreen-image');
+
+                         if (!document.fullscreenElement) {
+                             if (element.requestFullscreen) {
+                                 element.requestFullscreen();
+                            } else if (element.mozRequestFullScreen) {
+                                  element.mozRequestFullScreen();
+                            } else if (element.webkitRequestFullscreen) {
+                                 element.webkitRequestFullscreen();
+                            } else if (element.msRequestFullscreen) {
+                                 element.msRequestFullscreen();
+                            }   
+                        } else {
+                             if (document.exitFullscreen) {
+                                  document.exitFullscreen();
+                            } else if (document.mozCancelFullScreen) {
+                                 document.mozCancelFullScreen();
+                            } else if (document.webkitExitFullscreen) {
+                                 document.webkitExitFullscreen();
+                            } else if (document.msExitFullscreen) {
+                                 document.msExitFullscreen();
+                            }
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="info">
+            <h1>Title of the photo</h1>
+            <p class="small-text">by nom artist</p>
+            <p class="price">£ price</p>
+            <ul class="details">
+                <li>Year:2023</li>
+                <li>Size: give here the size</li>
+                <li>Signed :Yes, Front bottom right</li>
+                <li>Frame:No</li>
+                <li>Style: Abstract</li>
+                <li>Subject: Landscapes, sea and sky</li>
+                <li>Shipping:Ships from Australia</li>
+            </ul>
+            <br>
+            <div class="buttons">
+                <button class="add-to-cart">Add to Basket</button>
+            </div>
+            <div class="buttons">
+                <button class="add-to-favorites">Add to my favorites</button>
+            </div>
+        </div>
+    </div>
+    <div class="container1">
+        <div class="artist">
+            <h1>the name of the artist</h1>
+            <img src="images/images.jpg"alt="artist photo">
+        </div>
+        <div class="aboutsection">
+            <p>this is a short parahraph where we're gonna put things about the artist.this is a short parahraph where we're gonna put things about the artist.this is a short parahraph where we're gonna put things about the artist.this is a short parahraph where we're gonna put things about the artist.<br><b><a href="#" target="_blank">see more(if there is an artist page)</a> </b></p>
+            <br>
+        </div>
+        
+    </div>
+    <div class="container2">
+        <h3>Other listings from name of the artist:</h3>
+        <div class="first" style="padding-left: 190px;padding-right: 0px;"><a href="#" target="_blank"><img src="images/Nychos-Chemistry1.jpg"></a></div>
+        <div class="second" style="padding-left: 0px;"><a href="#" target="_blank"><img src="images/HD-wallpaper-pencil-drawing-art-cool-pencil-people-flowers-drawings.jpg"></a></div>
+        <div class="third"><a href="#" target="_blank"><img src="images/pencil-drawings-of-animals-1200x900.jpg"></a></div>
+        <div class="four" style="padding-right: 100px;"><a href="#" target="_blank"><img src="images/9f9b789ab0950e0a3acead1edbae1d70.jpg"></a></div>
+
+    </div>
+</body>
+</html>
