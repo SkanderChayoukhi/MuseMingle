@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Document</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="../allcss/style1.css">
     <style>
         nav {
   position: fixed;
@@ -169,7 +169,7 @@ p {
 </head>
 <body>
     <nav>
-        <img src="images/logo.png" alt="">
+        <img src="../allphoto/logo.png" alt="">
         <div class="navigation">
             <ul>
                 <li><a class="active" href="#">Home</a></li>
@@ -194,28 +194,28 @@ p {
 <section class="intro">   
     <div class="container">
         <div class="slide">
-            <div class="item" style="background-image: url(images/painting.jpg);">
+            <div class="item" style="background-image: url(../allphoto/painting.jpg);">
                 <div class="content">
                     <div class="name">Paintings</div>
                     <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
                   
                 </div>
             </div>
-            <div class="item" style="background-image: url(images/drawing.jpg);">
+            <div class="item" style="background-image: url(../allphoto/drawing.jpg);">
                 <div class="content">
                     <div class="name">Drawings</div>
                     <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
         
                 </div>
             </div>
-            <div class="item" style="background-image: url(images/photography.jpg);">
+            <div class="item" style="background-image: url(../allphoto/photography.jpg);">
                 <div class="content">
                     <div class="name">Photography</div>
                     <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
                     
                 </div>
             </div>
-            <div class="item" style="background-image: url(images/artist.jpg);">
+            <div class="item" style="background-image: url(../allphoto/artist.jpg);">
                 <div class="content">
                     <div class="name">explore the artists</div>
                     <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
@@ -448,7 +448,7 @@ p {
 
 
 
-<script src="app.js"></script> 
+<script src="../alljs/app.js"></script> 
 <?php include "footer.php" ?>   
 </body>
 </html>
