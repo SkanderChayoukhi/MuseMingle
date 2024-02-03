@@ -1,18 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const categories = document.querySelectorAll('.section2 .category');
-
-    categories.forEach(category => {
-        category.addEventListener('click', function () {
-            categories.forEach(cat => {
-                cat.classList.remove('categorie-selected');
-            });
-            category.classList.add('categorie-selected');
-        });
-    });
-});
-
-
 document.addEventListener("DOMContentLoaded", function () {
+    const categories = document.querySelectorAll('.section2 .category');
     const galleryContainer = document.getElementById("gallery");
     const paginationContainer = document.getElementById("pagination");
     const searchInput = document.getElementById("searchInput");
@@ -42,6 +29,23 @@ document.addEventListener("DOMContentLoaded", function () {
         "../allphoto/20.jfif",
         "../allphoto/21.jfif",
     ];
+
+
+
+    categories.forEach(category => {
+        if (category.innerText.toLowerCase() === 'all') {
+            category.classList.add('categorie-selected');
+        }
+
+        category.addEventListener('click', function () {
+            categories.forEach(cat => {
+                cat.classList.remove('categorie-selected');
+            });
+            category.classList.add('categorie-selected');
+        });
+    });
+
+    
 
     const imagesPerPage = 12;
     let currentPage = 1;
