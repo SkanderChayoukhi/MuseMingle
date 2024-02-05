@@ -173,12 +173,8 @@ p {
         <div class="navigation">
             <ul>
                 <li><a class="active" href="#">Home</a></li>
+                <li><a href="../allhtml/index2.html">Gallery</a></li>
                 <li><a href="">Artists</a></li>
-                <li><select name="shop" id="">
-                    <option value="drawing" >Gallery</option>
-                    <option value="photography">Photography</option>
-                    <option value="painting">Paintings</option>
-                </select></li>
                 <li><a  href="">Contact us</a></li>
                 <li><a  href="">games</a></li>
             </ul>

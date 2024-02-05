@@ -1,63 +1,43 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const categories = document.querySelectorAll('.section2 .category');
     const galleryContainer = document.getElementById("gallery");
     const paginationContainer = document.getElementById("pagination");
     const searchInput = document.getElementById("searchInput");
     const addImageButton = document.getElementById("addImageButton");
 
-    // Array of image URLs
-    const imageUrls = [
-        "../allphoto/1.jfif",
-        "../allphoto/2.jfif",
-        "../allphoto/3.jfif",
-        "../allphoto/4.jfif",
-        "../allphoto/5.jfif",
-        "../allphoto/6.jfif",
-        "../allphoto/7.jfif",
-        "../allphoto/8.jfif",
-        "../allphoto/9.jfif",
-        "../allphoto/10.jfif",
-        "../allphoto/11.jfif",
-        "../allphoto/12.jfif",
-        "../allphoto/13.jfif",
-        "../allphoto/14.jfif",
-        "../allphoto/15.jfif",
-        "../allphoto/16.jfif",
-        "../allphoto/17.jfif",
-        "../allphoto/18.jfif",
-        "../allphoto/19.jfif",
-        "../allphoto/20.jfif",
-        "../allphoto/21.jfif",
-    ];
+    const serverURL = "http://localhost/php/projetjunior/MuseMingle/allphp/fetch_gallery_images2.php";
 
+    async function fetchImagesFromCategory(category) {
+        try {
+            const response = await fetch(`${serverURL}?category=${category}`);
+            const data = await response.json();
 
+            const imageDetails = data.map(item => ({
+                url: item.url_image,
+                title: item.title,
+                artist: item.nomArtist,
+                price: item.price
+            }));
 
-    categories.forEach(category => {
-        if (category.innerText.toLowerCase() === 'all') {
-            category.classList.add('categorie-selected');
+            return imageDetails;
+        } catch (error) {
+            console.error(`Error fetching images from ${category}:`, error);
+            return [];
         }
-
-        category.addEventListener('click', function () {
-            categories.forEach(cat => {
-                cat.classList.remove('categorie-selected');
-            });
-            category.classList.add('categorie-selected');
-        });
-    });
-
-    
+    }
 
     const imagesPerPage = 12;
     let currentPage = 1;
+    let currentCategory = 'all';
+    let allImages = [];
 
-    function displayImages(page, images = imageUrls) {
+    async function displayImages(page, images) {
         const startIndex = (page - 1) * imagesPerPage;
         const endIndex = startIndex + imagesPerPage;
         const displayedImages = images.slice(startIndex, endIndex);
 
-        // Clear existing images and create new ones
         galleryContainer.innerHTML = "";
-        displayedImages.forEach((url, index) => {
+        displayedImages.forEach(({ url, title, artist, price }) => {
             const imgContainer = document.createElement("div");
             imgContainer.classList.add("image-container");
 
@@ -67,12 +47,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const detailsContainer = document.createElement("div");
             detailsContainer.classList.add("image-details");
-            detailsContainer.innerHTML = "Name <br> Artist <br> Price "; // Add your details here
+            detailsContainer.innerHTML = `<strong>${title}</strong><br>Artist: ${artist}<br>Price: ${price}DT`;
 
             const openButton = document.createElement("button");
             openButton.textContent = "View More";
             openButton.classList.add("open-button");
-            openButton.addEventListener("click", () => openImage(url));
+            openButton.addEventListener("click", () => {
+                window.open('../allhtml/IMG.html', '_blank');
+            });
+            
 
             imgContainer.appendChild(imgElement);
             imgContainer.appendChild(detailsContainer);
@@ -82,56 +65,88 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function displayPaginationButtons(images = imageUrls) {
+    async function displayPaginationButtons(images) {
         const pageCount = Math.ceil(images.length / imagesPerPage);
         paginationContainer.innerHTML = "";
 
         for (let i = 1; i <= pageCount; i++) {
             const button = document.createElement("button");
             button.textContent = i;
-            button.addEventListener("click", () => {
+            button.addEventListener("click", async () => {
                 currentPage = i;
-                displayImages(currentPage, images);
+                const updatedImages = await fetchImages(currentCategory);
+                displayImages(currentPage, updatedImages);
 
-                // Remove the 'selected' class from all buttons
                 document.querySelectorAll('.pagination button').forEach(btn => {
                     btn.classList.remove('selected');
                 });
 
-                // Add the 'selected' class to the clicked button
                 button.classList.add('selected');
             });
             paginationContainer.appendChild(button);
 
-            // Initially add the 'selected' class to the first button
             if (i === 1) {
                 button.classList.add('selected');
             }
         }
     }
 
-    // Function to open the image in a new window or modal (customize as needed)
     function openImage(url) {
         window.open(url, "_blank");
     }
 
     // Search functionality
-    searchInput.addEventListener("input", () => {
+    searchInput.addEventListener("input", async () => {
         const searchTerm = searchInput.value.toLowerCase();
-        const filteredImages = imageUrls.filter(url => url.toLowerCase().includes(searchTerm));
+        const filteredImages = allImages.filter(({ title }) => title.toLowerCase().includes(searchTerm));
         displayImages(currentPage, filteredImages);
         displayPaginationButtons(filteredImages);
     });
 
+    // Event listeners for category clicks
+    categories.forEach(category => {
+        category.addEventListener('click', async function () {
+            categories.forEach(cat => {
+                cat.classList.remove('categorie-selected');
+            });
+            category.classList.add('categorie-selected');
+
+            const categoryName = category.getAttribute('data-category');
+            currentCategory = categoryName;
+
+            if (categoryName === 'all') {
+                const allCategories = ['paintings', 'photography', 'drawings'];
+                const promises = allCategories.map(cat => fetchImagesFromCategory(cat));
+                const imagesArrays = await Promise.all(promises);
+                allImages = imagesArrays.flat();
+                displayImages(currentPage, allImages);
+                displayPaginationButtons(allImages);
+            } else {
+                const images = await fetchImagesFromCategory(categoryName);
+                allImages = images;
+                displayImages(currentPage, images);
+                displayPaginationButtons(images);
+            }
+        });
+    });
+
+    // Trigger click event on 'all' category initially
+    const allCategoryButton = document.querySelector('.section2 .category[data-category="all"]');
+    if (allCategoryButton) {
+        allCategoryButton.click();
+    }
+
     // Add Image button functionality
     addImageButton.addEventListener("click", () => {
-        // Redirect to another page
-        // window.location.href = "your_target_page.html"; 
         window.location.reload();
     });
-    
 
     // Initial display
-    displayImages(currentPage);
-    displayPaginationButtons();
+    // Fetch and display images based on the default category
+    const initialCategory = 'all';
+    const initialImages = await fetchImagesFromCategory(initialCategory);
+    allImages = initialImages;
+    displayImages(currentPage, initialImages);
+    displayPaginationButtons(initialImages);
 });
+          
