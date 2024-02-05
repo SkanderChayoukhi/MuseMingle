@@ -88,7 +88,7 @@ nav .navigation ul li a.active{
 }
 
 .section2 .category:hover {
-    background-color:#4a6be2;
+    background-color:rgb(133, 5, 5);
 }
 
 .section2 .category img {
@@ -102,7 +102,7 @@ nav .navigation ul li a.active{
 }
 
 .section2 .categorie-selected {
-    background-color: #3498db; 
+    background-color: rgb(164, 7, 7); 
 }
 
 
@@ -145,14 +145,14 @@ nav .navigation ul li a.active{
 
 .section2 #addImageButton {
     padding: 12px 18px; /* Increased padding */
-    background-color: #3498db;
+    background-color: rgb(164, 7, 7);
     color: white;
     border: none;
     border-radius: 8px; /* Increased border-radius */
     cursor: pointer;
 }
 .section2 #addImageButton:hover {
-    background-color: #4a6be2; 
+    background-color: rgb(133, 5, 5); 
 }
 
 
@@ -199,7 +199,7 @@ nav .navigation ul li a.active{
     top: 0;
     right: 0;
     padding: 8px; /* Adjusted padding */
-    background-color: #3498db;
+    background-color: rgb(164, 7, 7);
     color: white;
     cursor: pointer;
     border: none;
@@ -208,7 +208,7 @@ nav .navigation ul li a.active{
     transition: background-color 0.7s ease;
 }
 .section2 .open-button:hover {
-    background-color: #4a6be2; /* Darker blue color on hover */
+    background-color: rgb(133, 5, 5); /* Darker blue color on hover */
 }
 
 
@@ -222,17 +222,17 @@ nav .navigation ul li a.active{
     padding: 12px 18px; /* Increased padding */
     margin: 0 10px; /* Increased margin */
     cursor: pointer;
-    background-color: #3498db;
+    background-color: rgb(164, 7, 7);
     color: white;
     border: none;
     border-radius: 8px; /* Increased border-radius */
 }
 
 .section2 .pagination button:hover {
-    background-color: #4a6be2; 
+    background-color: rgb(133, 5, 5); 
 }
 
 
 .section2 .pagination button.selected {
-    background-color: #273c75;
+    background-color: rgb(97, 7, 7);
 }
