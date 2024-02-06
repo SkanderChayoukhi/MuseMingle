@@ -1,3 +1,6 @@
+<?php
+     include_once 'includes/dbh.inc.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,31 @@
     <link rel="stylesheet" href="../allcss/PhotodDescription.css">
 </head>
 <body>
-    <nav>
+    <?php
+         $sql="SELECT * FROM drawings WHERE id =1;";
+         $result = mysqli_query($conn,$sql);
+         $resultCheck= mysqli_num_rows($result);
+         if($resultCheck > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $hh= $row['url'];
+                $tt= $row['title'];
+                $nn=$row['nomArtist'];
+                $pp=$row['price'];
+                $ss=$row['size'];
+                $yy=$row['year'];
+                $sig=$row['signed'];
+                $ff=$row['frame'];
+                $st=$row['style'];
+                $su=$row['subject'];
+                $sh=$row['shipping'];
+                $dd=$row['descriptionArtist'];
+                $arr=$row['urlimgartist'];
+
+
+            }
+         }
+    ?>  
+    <nav id="navbar" class="navbar" >
         <img src="../allphoto/logo.png" alt="">
         <div class="navigation" style="padding-right: 200px;">
             <ul>
@@ -22,38 +49,39 @@
     <div class="container" style="padding-top: 100px;">
         <div class="artwork">
             <div class="image-container">
-                <img src="../allphoto/img2.jpg" alt="Artwork Image" id="fullscreen-image">
+                <img src=<?php echo $hh ?> alt="Artwork Image" id="fullscreen-image">
             </div>
         </div>
         <div class="info">
-            <h1>Title of the photo</h1>
-            <p class="small-text">by nom artist</p>
-            <p class="price">£ price</p>
+            <h1><?php echo $tt ?></h1>
+            <div><p style="font-size: 20px;">by <i style="color:rgb(164, 7, 7);font-family:cursive;"><?php echo $nn ?></i></p></div>
+            <p class="price">£ <?php echo $pp ?></p>
             <ul class="details">
-                <li>Year:2023</li>
-                <li>Size: give here the size</li>
-                <li>Signed :Yes, Front bottom right</li>
-                <li>Frame:No</li>
-                <li>Style: Abstract</li>
-                <li>Subject: Landscapes, sea and sky</li>
-                <li>Shipping:Ships from Australia</li>
+                <li>Year:<?php echo $yy ?></li>
+                <li>Size: <?php echo $ss ?></li>
+                <li>Signed :<?php echo $sig ?></li>
+                <li>Frame:<?php echo $ff ?></li>
+                <li>Style: <?php echo $st ?></li>
+                <li>Subject: <?php echo $su ?></li>
+                <li>Shipping:<?php echo $sh ?></li>
+           
+                <br>
+                <div class="buttons">
+                      <button class="add-to-cart">Add to Basket</button>
+                 </div>
+                <div class="buttons">
+                      <button class="add-to-favorites">Add to my favorites</button>
+                </div>
             </ul>
-            <br>
-            <div class="buttons">
-                <button class="add-to-cart">Add to Basket</button>
-            </div>
-            <div class="buttons">
-                <button class="add-to-favorites">Add to my favorites</button>
-            </div>
         </div>
     </div>
     <div class="container1">
         <div class="artist">
             <h1>the name of the artist</h1>
-            <img src="../allphoto/img0.jpg"alt="artist photo">
+            <img src= <?php echo $arr ?> alt="artist photo">
         </div>
         <div class="aboutsection">
-            <p>this is a short parahraph where we're gonna put things about the artist.this is a short parahraph where we're gonna put things about the artist.this is a short parahraph where we're gonna put things about the artist.this is a short parahraph where we're gonna put things about the artist.<br><b><a href="#" target="_blank">see more(if there is an artist page)</a> </b></p>
+            <p><?php echo $dd ?><br><b><a href="#" target="_blank">see more(if there is an artist page)</a> </b></p>
             <br>
         </div>
         
@@ -67,7 +95,22 @@
 
     </div>
 
-    <script>
+    <script> 
+         let prevScrollPos = window.pageYOffset;
+
+        window.onscroll = function() {
+            const currentScrollPos = window.pageYOffset;
+
+            if (prevScrollPos > currentScrollPos) {
+    // Scrolling up, show the navbar
+                 document.getElementById("navbar").style.top = "0";
+            } else {
+    // Scrolling down, hide the navbar
+                  document.getElementById("navbar").style.top = `-${document.getElementById("navbar").offsetHeight}px`;
+            }
+
+            prevScrollPos = currentScrollPos;
+        };
         document.getElementById('fullscreen-image').addEventListener('click', toggleFullScreen);
     
         function toggleFullScreen() {
