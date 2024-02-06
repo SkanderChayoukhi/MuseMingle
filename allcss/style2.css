@@ -5,7 +5,6 @@
 }
 
 
-
 nav{
     display: flex;
     position: fixed;
@@ -38,6 +37,7 @@ nav .navigation ul li a{
     font-size: 17px;
     font-weight: 500 ;
     transition: 0.3s ease;
+    font-family: 'poppins', sans-serif ;
 }
 nav .navigation ul li select{
     background-color: white;

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const imagesPerPage = 12;
     let currentPage = 1;
-    let currentCategory = 'all';
+    let currentCategory = 'all'; // Store the current category
     let allImages = [];
 
     async function displayImages(page, images) {
@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             openButton.addEventListener("click", () => {
                 window.open('../allhtml/IMG.html', '_blank');
             });
-            
 
             imgContainer.appendChild(imgElement);
             imgContainer.appendChild(detailsContainer);
@@ -72,34 +71,38 @@ document.addEventListener("DOMContentLoaded", async function () {
         for (let i = 1; i <= pageCount; i++) {
             const button = document.createElement("button");
             button.textContent = i;
-            button.addEventListener("click", async () => {
-                currentPage = i;
-                const updatedImages = await fetchImages(currentCategory);
-                displayImages(currentPage, updatedImages);
+            paginationContainer.appendChild(button);
+        }
+
+        // Event delegation for handling pagination button clicks
+        paginationContainer.addEventListener("click", async (event) => {
+            if (event.target.tagName === "BUTTON") {
+                currentPage = parseInt(event.target.textContent);
+                console.log("Current Page:", currentPage); // Debugging statement
+
+                displayImages(currentPage, allImages);
 
                 document.querySelectorAll('.pagination button').forEach(btn => {
                     btn.classList.remove('selected');
                 });
 
-                button.classList.add('selected');
-            });
-            paginationContainer.appendChild(button);
-
-            if (i === 1) {
-                button.classList.add('selected');
+                event.target.classList.add('selected');
             }
-        }
-    }
+        });
 
-    function openImage(url) {
-        window.open(url, "_blank");
+        // Select the first page initially
+        const firstPaginationButton = paginationContainer.querySelector("button");
+        if (firstPaginationButton) {
+            firstPaginationButton.classList.add('selected');
+        }
+
     }
 
     // Search functionality
     searchInput.addEventListener("input", async () => {
         const searchTerm = searchInput.value.toLowerCase();
         const filteredImages = allImages.filter(({ title }) => title.toLowerCase().includes(searchTerm));
-        displayImages(currentPage, filteredImages);
+        displayImages(1, filteredImages); // Always start displaying from page 1
         displayPaginationButtons(filteredImages);
     });
 
@@ -119,11 +122,13 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const promises = allCategories.map(cat => fetchImagesFromCategory(cat));
                 const imagesArrays = await Promise.all(promises);
                 allImages = imagesArrays.flat();
+                currentPage = 1; // Reset currentPage to 1 when switching to 'all' category
                 displayImages(currentPage, allImages);
                 displayPaginationButtons(allImages);
             } else {
                 const images = await fetchImagesFromCategory(categoryName);
                 allImages = images;
+                currentPage = 1; // Reset currentPage to 1 when switching to another category
                 displayImages(currentPage, images);
                 displayPaginationButtons(images);
             }
@@ -141,7 +146,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         window.location.reload();
     });
 
-    // Initial display
     // Fetch and display images based on the default category
     const initialCategory = 'all';
     const initialImages = await fetchImagesFromCategory(initialCategory);
@@ -149,4 +153,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     displayImages(currentPage, initialImages);
     displayPaginationButtons(initialImages);
 });
+
           

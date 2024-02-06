@@ -1,4 +1,5 @@
 <?php
+
 header("Content-Type: application/json");
 
 // Replace these with your actual database connection details
@@ -38,5 +39,3 @@ if ($result) {
 $stmt->close();
 $conn->close();
 ?>
-
-
