@@ -11,12 +11,18 @@
 </head>
 <body>
     <?php
-         $sql="SELECT * FROM drawings WHERE id =1;";
+         
+
+         $url = isset($_GET['url']) ? $_GET['url'] : '';
+         if (empty($url)) {
+            $url = 'https://d3rf6j5nx5r04a.cloudfront.net/gMbXKBi3gpfRxuYMYWbG1_m8VhA=/1120x0/product/c/d/25e0ea0e76c3434081df9e74170715a2_opt.jpg';
+         }
+         //$url="https://d3rf6j5nx5r04a.cloudfront.net/gMbXKBi3gpfRxuYMYWbG1_m8VhA=/1120x0/product/c/d/25e0ea0e76c3434081df9e74170715a2_opt.jpg";
+         $sql="SELECT * FROM drawings WHERE urlll='$url'";
          $result = mysqli_query($conn,$sql);
          $resultCheck= mysqli_num_rows($result);
          if($resultCheck > 0){
             while($row = mysqli_fetch_assoc($result)){
-                $hh= $row['url'];
                 $tt= $row['title'];
                 $nn=$row['nomArtist'];
                 $pp=$row['price'];
@@ -29,10 +35,81 @@
                 $sh=$row['shipping'];
                 $dd=$row['descriptionArtist'];
                 $arr=$row['urlimgartist'];
-
-
+                $sql1="SELECT urlll FROM drawings WHERE nomArtist='$nn'and urlll!='$url'";
+                $result1=mysqli_query($conn,$sql1);
+                $i=1;
+                if ($result1) {
+                    while ($row1 = mysqli_fetch_assoc($result1) and $i<=4) {
+                        $urlll = $row1['urlll'];
+                        ${'jj'.$i}=$urlll;
+                        $i=$i+1;
+                    }
+                }
             }
-         }
+
+
+         }else{
+                $sql="SELECT * FROM paintings WHERE urlll='$url'";
+                $result = mysqli_query($conn,$sql);
+                $resultCheck= mysqli_num_rows($result);
+                if($resultCheck > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $tt= $row['title'];
+                        $nn=$row['nomArtist'];
+                        $pp=$row['price'];
+                        $ss=$row['size'];
+                        $yy=$row['year'];
+                        $sig=$row['signed'];
+                        $ff=$row['frame'];
+                        $st=$row['style'];
+                        $su=$row['subject'];
+                        $sh=$row['shipping'];
+                        $dd=$row['descriptionArtist'];
+                        $arr=$row['urlimgartist'];
+                        $sql1="SELECT urlll FROM paintings WHERE nomArtist='$nn'and urlll!='$url'";
+                        $result1=mysqli_query($conn,$sql1);
+                        $i=1;
+                        if ($result1) {
+                            while ($row1 = mysqli_fetch_assoc($result1) and $i<=4) {
+                                $urlll = $row1['urlll'];
+                                ${'jj'.$i}=$urlll;
+                                $i=$i+1;
+                            }
+                        }
+                    } 
+                }else{
+                    $sql="SELECT * FROM photography WHERE urlll='$url'";
+                    $result = mysqli_query($conn,$sql);
+                    $resultCheck= mysqli_num_rows($result);
+                    if($resultCheck > 0){
+                         while($row = mysqli_fetch_assoc($result)){
+                             $tt= $row['title'];
+                             $nn=$row['nomArtist'];
+                             $pp=$row['price'];
+                             $ss=$row['size'];
+                             $yy=$row['year'];
+                             $sig=$row['signed'];
+                             $ff=$row['frame'];
+                             $st=$row['style'];
+                             $su=$row['subject'];
+                             $sh=$row['shipping'];
+                             $dd=$row['descriptionArtist'];
+                             $arr=$row['urlimgartist'];
+                             $sql1="SELECT urlll FROM photography WHERE nomArtist='$nn'and urlll!='$url'";
+                             $result1=mysqli_query($conn,$sql1);
+                             $i=1;
+                             if ($result1) {
+                                  while ($row1 = mysqli_fetch_assoc($result1) and $i<=4) {
+                                     $urlll = $row1['urlll'];
+                                     ${'jj'.$i}=$urlll;
+                                     $i=$i+1;
+                                    }
+                            }
+                        } 
+                    }
+
+                }
+        }
     ?>  
     <nav id="navbar" class="navbar" >
         <img src="../allphoto/logo.png" alt="">
@@ -49,7 +126,7 @@
     <div class="container" style="padding-top: 100px;">
         <div class="artwork">
             <div class="image-container">
-                <img src=<?php echo $hh ?> alt="Artwork Image" id="fullscreen-image">
+                <img src=<?php echo $url ?> alt="Artwork Image" id="fullscreen-image">
             </div>
         </div>
         <div class="info">
@@ -88,10 +165,10 @@
     </div>
     <div class="container2">
         <h3>Other listings from name of the artist:</h3>
-        <div class="first" style="padding-left: 190px;padding-right: 0px;"><a href="#" target="_blank"><img src="../allphoto/img1.jpg"></a></div>
-        <div class="second" style="padding-left: 0px;"><a href="#" target="_blank"><img src="../allphoto/HD-wallpaper.jpg"></a></div>
-        <div class="third"><a href="#" target="_blank"><img src="../allphoto/img3.jpg"></a></div>
-        <div class="four" style="padding-right: 100px;"><a href="#" target="_blank"><img src="../allphoto/img4.jpg"></a></div>
+        <div class="first" style="padding-left: 190px;padding-right: 0px;"><a href="<?php echo 'IMG.php?url=' . urlencode($jj1); ?>" target="_blank"><img src=<?php echo $jj1 ?>></a></div>
+        <div class="second" style="padding-left: 0px;"><a href="<?php echo 'IMG.php?url=' . urlencode($jj2); ?>" target="_blank"><img src=<?php echo $jj2 ?>></a></div>
+        <div class="third"><a href="<?php echo 'IMG.php?url=' . urlencode($jj3); ?>" target="_blank"><img src=<?php echo $jj3 ?>></a></div>
+        <div class="four" style="padding-right: 100px;"><a href="<?php echo 'IMG.php?url=' . urlencode($jj4); ?>" target="_blank"><img src=<?php echo $jj4 ?>></a></div>
 
     </div>
 
