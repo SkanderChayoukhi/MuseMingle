@@ -174,7 +174,6 @@ p {
             <ul>
                 <li><a class="active" href="#">Home</a></li>
                 <li><a href="../allhtml/index2.html">Gallery</a></li>
-                <li><a href="">Artists</a></li>
                 <li><a  href="">Contact us</a></li>
                 <li><a  href="">games</a></li>
             </ul>
