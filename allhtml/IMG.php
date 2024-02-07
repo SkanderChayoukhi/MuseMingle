@@ -14,11 +14,7 @@
          
 
          $url = isset($_GET['url']) ? $_GET['url'] : '';
-         if (empty($url)) {
-            $url = 'https://d3rf6j5nx5r04a.cloudfront.net/gMbXKBi3gpfRxuYMYWbG1_m8VhA=/1120x0/product/c/d/25e0ea0e76c3434081df9e74170715a2_opt.jpg';
-         }
-         //$url="https://d3rf6j5nx5r04a.cloudfront.net/gMbXKBi3gpfRxuYMYWbG1_m8VhA=/1120x0/product/c/d/25e0ea0e76c3434081df9e74170715a2_opt.jpg";
-         $sql="SELECT * FROM drawings WHERE urlll='$url'";
+         $sql="SELECT * FROM drawings WHERE url_image='$url'";
          $result = mysqli_query($conn,$sql);
          $resultCheck= mysqli_num_rows($result);
          if($resultCheck > 0){
@@ -34,13 +30,13 @@
                 $su=$row['subject'];
                 $sh=$row['shipping'];
                 $dd=$row['descriptionArtist'];
-                $arr=$row['urlimgartist'];
-                $sql1="SELECT urlll FROM drawings WHERE nomArtist='$nn'and urlll!='$url'";
+                $arr=$row['photo_image'];
+                $sql1="SELECT urlll FROM drawings WHERE nomArtist='$nn'and url_image!='$url'";
                 $result1=mysqli_query($conn,$sql1);
                 $i=1;
                 if ($result1) {
                     while ($row1 = mysqli_fetch_assoc($result1) and $i<=4) {
-                        $urlll = $row1['urlll'];
+                        $urlll = $row1['url_image'];
                         ${'jj'.$i}=$urlll;
                         $i=$i+1;
                     }
@@ -49,7 +45,7 @@
 
 
          }else{
-                $sql="SELECT * FROM paintings WHERE urlll='$url'";
+                $sql="SELECT * FROM paintings WHERE url_image='$url'";
                 $result = mysqli_query($conn,$sql);
                 $resultCheck= mysqli_num_rows($result);
                 if($resultCheck > 0){
@@ -65,20 +61,20 @@
                         $su=$row['subject'];
                         $sh=$row['shipping'];
                         $dd=$row['descriptionArtist'];
-                        $arr=$row['urlimgartist'];
-                        $sql1="SELECT urlll FROM paintings WHERE nomArtist='$nn'and urlll!='$url'";
+                        $arr=$row['photo_image'];
+                        $sql1="SELECT urlll FROM paintings WHERE nomArtist='$nn'and url_image!='$url'";
                         $result1=mysqli_query($conn,$sql1);
                         $i=1;
                         if ($result1) {
                             while ($row1 = mysqli_fetch_assoc($result1) and $i<=4) {
-                                $urlll = $row1['urlll'];
+                                $urlll = $row1['url_image'];
                                 ${'jj'.$i}=$urlll;
                                 $i=$i+1;
                             }
                         }
                     } 
                 }else{
-                    $sql="SELECT * FROM photography WHERE urlll='$url'";
+                    $sql="SELECT * FROM photography WHERE url_image='$url'";
                     $result = mysqli_query($conn,$sql);
                     $resultCheck= mysqli_num_rows($result);
                     if($resultCheck > 0){
@@ -94,13 +90,13 @@
                              $su=$row['subject'];
                              $sh=$row['shipping'];
                              $dd=$row['descriptionArtist'];
-                             $arr=$row['urlimgartist'];
-                             $sql1="SELECT urlll FROM photography WHERE nomArtist='$nn'and urlll!='$url'";
+                             $arr=$row['photo_image'];
+                             $sql1="SELECT urlll FROM photography WHERE nomArtist='$nn'and url_image!='$url'";
                              $result1=mysqli_query($conn,$sql1);
                              $i=1;
                              if ($result1) {
                                   while ($row1 = mysqli_fetch_assoc($result1) and $i<=4) {
-                                     $urlll = $row1['urlll'];
+                                     $urlll = $row1['url_image'];
                                      ${'jj'.$i}=$urlll;
                                      $i=$i+1;
                                     }
