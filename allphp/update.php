@@ -1,5 +1,6 @@
 <?php
-  $conn = mysqli_connect("https://0c1b-102-158-196-8.ngrok-free.app/phpmyadmin","root","","musemingle");
+
+  $conn = mysqli_connect("0c1b-102-158-196-8.ngrok-free.app","root","","musemingle2");
   if ($_SERVER["REQUEST_METHOD"]== "POST"){
     $titre = $_POST["titre"];
     $url_image = $_POST["url_image"];
@@ -16,13 +17,13 @@
     $art_id = $_GET["id"];
     $category = $_GET["category"];
 
-    $query = "UPDATE $category SET titre = '$titre', url_image = '$url_image',price = '$price', size = '$size' , year = '$year', style = '$style', subject = '$subject', frame = '$frame', shipping = '$shipping', nomArtist = '$nomArtist', descriptionArtist = '$descriptionArtist',photo_artiste = '$photo_artiste' WHERE id = '$art_id'";
+    $query = "UPDATE $category SET title = '$titre', url_image = '$url_image',price = '$price', size = '$size' , year = '$year', style = '$style', subject = '$subject', frame = '$frame', shipping = '$shipping', nomArtist = '$nomArtist', descriptionArtist = '$descriptionArtist',photo_artiste = '$photo_artiste' WHERE id = '$art_id'";
     $result = $conn->query($query);
   }
   if($_GET["id"] and $_GET["category"] ){
     $art_id=$_GET["id"];
     $category = $_GET["category"];
-    $query = "SELECT * FROM $category WHERE id=".$user_id;
+    $query = "SELECT * FROM $category WHERE id=".$art_id;
     $result = $conn->query($query);
     $user = $result->fetch_all(MYSQLI_ASSOC);
   }
@@ -84,7 +85,7 @@
 
 <form action="#" method="post">
     <label for="titre">Title:</label>
-    <input type="text" id="titre" name="titre" value="<?php echo $user[0]["titre"] ?>">
+    <input type="text" id="titre" name="titre" value="<?php echo $user[0]["title"] ?>">
 
     <label for="url_image">Image URL:</label>
     <input type="url" id="url_image" name="url_image" value="<?php echo $user[0]["url_image"] ?>">
