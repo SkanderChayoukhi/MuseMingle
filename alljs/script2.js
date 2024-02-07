@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const galleryContainer = document.getElementById("gallery");
     const paginationContainer = document.getElementById("pagination");
     const searchInput = document.getElementById("searchInput");
-    const addImageButton = document.getElementById("addImageButton");
+    // const addImageButton = document.getElementById("addImageButton");
 
     const serverURL = "http://localhost/php/projetjunior/MuseMingle/allphp/fetch_gallery_images2.php";
 
@@ -53,10 +53,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             openButton.textContent = "View More";
             openButton.classList.add("open-button");
             openButton.addEventListener("click", () => {
-                const titleParam = encodeURIComponent(title); // Encode title
-                const categoryParam = encodeURIComponent(currentCategory); // Encode category
-                const url = `../allhtml/IMG.html?category=${categoryParam}&title=${titleParam}`; // Construct URL with parameters
-                window.open(url, '_blank'); // Open new tab with the URL
+                const urlParam = encodeURIComponent(url); // Encode url
+                const allurl = `../allhtml/IMG.html?url=${urlParam}`; // Construct URL with parameters
+                window.open(allurl, '_blank'); // Open new tab with the URL
             });
 
             imgContainer.appendChild(imgElement);
