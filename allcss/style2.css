@@ -5,7 +5,6 @@
 }
 
 
-
 nav{
     display: flex;
     position: fixed;
@@ -38,6 +37,7 @@ nav .navigation ul li a{
     font-size: 17px;
     font-weight: 500 ;
     transition: 0.3s ease;
+    font-family: 'poppins', sans-serif ;
 }
 nav .navigation ul li select{
     background-color: white;
@@ -143,7 +143,7 @@ nav .navigation ul li a.active{
     padding: 12px; /* Increased padding */
     border: 2px solid #ccc; /* Increased border width */
     border-radius: 50px; /* Increased border-radius */
-    margin-right: 139vh ; /* Increased margin-right */
+     margin-right: 145vh ; /*Increased margin-right (139vh) */
 }
 
 .section2 #addImageButton {
