@@ -61,8 +61,8 @@
                         $su=$row['subject'];
                         $sh=$row['shipping'];
                         $dd=$row['descriptionArtist'];
-                        $arr=$row['photo_image'];
-                        $sql1="SELECT urlll FROM paintings WHERE nomArtist='$nn'and url_image!='$url'";
+                        $arr=$row['photo_artiste'];
+                        $sql1="SELECT url_image FROM paintings WHERE nomArtist='$nn'and url_image!='$url'";
                         $result1=mysqli_query($conn,$sql1);
                         $i=1;
                         if ($result1) {
