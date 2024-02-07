@@ -143,7 +143,7 @@ nav .navigation ul li a.active{
     padding: 12px; /* Increased padding */
     border: 2px solid #ccc; /* Increased border width */
     border-radius: 50px; /* Increased border-radius */
-    margin-right: 139vh ; /* Increased margin-right */
+     margin-right: 145vh ; /*Increased margin-right (139vh) */
 }
 
 .section2 #addImageButton {

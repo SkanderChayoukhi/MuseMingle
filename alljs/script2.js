@@ -53,7 +53,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             openButton.textContent = "View More";
             openButton.classList.add("open-button");
             openButton.addEventListener("click", () => {
-                window.open('../allhtml/IMG.html', '_blank');
+                const titleParam = encodeURIComponent(title); // Encode title
+                const categoryParam = encodeURIComponent(currentCategory); // Encode category
+                const url = `../allhtml/IMG.html?category=${categoryParam}&title=${titleParam}`; // Construct URL with parameters
+                window.open(url, '_blank'); // Open new tab with the URL
             });
 
             imgContainer.appendChild(imgElement);
@@ -142,9 +145,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     // Add Image button functionality
-    addImageButton.addEventListener("click", () => {
-        window.location.reload();
-    });
+    // addImageButton.addEventListener("click", () => {
+    //     window.location.reload();
+    // });
 
     // Fetch and display images based on the default category
     const initialCategory = 'all';
