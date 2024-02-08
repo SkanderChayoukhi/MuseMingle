@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             openButton.classList.add("open-button");
             openButton.addEventListener("click", () => {
                 const urlParam = encodeURIComponent(url); // Encode url
-                const allurl = `../allhtml/IMG.php?url=${urlParam}`; // Construct URL with parameters
+                const allurl = `../allphp/IMG.php?url=${urlParam}`; // Construct URL with parameters
                 window.open(allurl, '_blank'); // Open new tab with the URL
             });
 

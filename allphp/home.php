@@ -1,5 +1,5 @@
 <?php
-$conn=mysqli_connect("localhost","root","","musemingle1");
+$conn=mysqli_connect("localhost","root","","musemingle");
 if(!$conn){
     echo 'connection error!! :'. mysqli_connect_error();
 }
@@ -419,11 +419,13 @@ nav .navigation ul li a.active{
 </head>
 <body>
     <nav>
-        <img src="../allphoto/logo.png" alt="">
+        <a href="../allphp/home.php">
+            <img src="../allphoto/logo.png" alt="">
+        </a>
         <div class="navigation">
             <ul>
                 <li><a class="active" href="#">Home</a></li>
-                <li><a href=""></a>Gallery</li>
+                <li><a href="../allhtml/index2.html">Gallery</a></li>
                 <li><a  href="">Contact us</a></li>
                 <li><a  href="">games</a></li>
             </ul>
@@ -551,36 +553,36 @@ nav .navigation ul li a.active{
             <div class="slide0">
                 <div class="item" style="background-image: url(../allphoto/painting.jpg);">
                     <div class="content">
-                        <div class="name">Paintings</div>
+                        <div class="name">Photography</div>
                         <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
                       
                     </div>
                 </div>
+                <div class="item" style="background-image: url(../allphoto/artist.jpg);">
+                    <div class="content">
+                        <div class="name">explore the arts</div>
+                        <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
+                        
+                    </div>
+                </div>
                 <div class="item" style="background-image: url(../allphoto/drawing.jpg);">
                     <div class="content">
-                        <div class="name">Drawings</div>
+                        <div class="name">Paintings</div>
                         <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
             
                     </div>
                 </div>
                 <div class="item" style="background-image: url(../allphoto/photography.jpg);">
                     <div class="content">
-                        <div class="name">Photography</div>
-                        <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
-                        
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(../allphoto/artist.jpg);">
-                    <div class="content">
-                        <div class="name">explore the artists</div>
+                        <div class="name">Drawings</div>
                         <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
                         
                     </div>
                 </div>
             </div>
             <div class="button">
-                <button class="prev"><i class='bx bx-left-arrow-alt'></i></button>
-                <button class="next"><i class='bx bx-right-arrow-alt'></i></button>
+                <button class="next"><i class='bx bx-left-arrow-alt'></i></button>
+                <button class="prev"><i class='bx bx-right-arrow-alt'></i></button>
             </div>
         </div>
     </section>

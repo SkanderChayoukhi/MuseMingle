@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artwork Page</title>
-    <link rel="stylesheet" href="../allcss/PhotodDescription.css">
-</head>
-<body>
 <?php
 $dbServername = "localhost";
 $dbUsername = "root";
@@ -104,19 +95,31 @@ if ($resultCheck > 0) {
 }
 
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork Page</title>
+    <link rel="stylesheet" href="../allcss/PhotodDescription.css">
+</head>
+<body>
+    <section>
     <nav id="navbar" class="navbar" >
-        <img src="../allphoto/logo.png" alt="">
+        <a href="./home.php">
+            <img src="../allphoto/logo.png" alt="">
+        </a>
         <div class="navigation" style="padding-right: 200px;">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a class="active" href="./index2.html">Gallery</a></li>
+                <li><a href="./home.php">Home</a></li>
+                <li><a class="active" href="../allhtml/index2.html">Gallery</a></li>
                 <li><a  href="">Contact us</a></li>
                 <li><a  href="">games</a></li>
                 <li><a class="delete-button" href="#">Delete</a></li>
             </ul>
         </div>
     </nav>
+    </section>
     <div class="container" style="padding-top: 100px;">
         <div class="artwork">
             <div class="image-container">
@@ -212,7 +215,7 @@ if ($resultCheck > 0) {
         // Prompt a confirmation alert before deletion
         if (confirm("Are you sure you want to delete this artwork?")) {
             // If user confirms, redirect to the delete endpoint
-            window.location.href = "../allphp/delete.php?url=<?php echo urlencode($url); ?>";
+            window.location.href = "./delete.php?url=<?php echo urlencode($url); ?>";
         }
         });
     </script>
