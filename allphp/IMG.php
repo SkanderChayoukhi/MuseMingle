@@ -115,6 +115,7 @@ if ($resultCheck > 0) {
                 <li><a class="active" href="./gallerypage.php">Gallery</a></li>
                 <li><a  href="">Contact us</a></li>
                 <li><a  href="">games</a></li>
+                <li><a  href="<?php echo"./update.php?id=".$_GET["id"]."&category=".$_GET['category'] ?>">update</a></li>
                 <li><a class="delete-button" href="#">Delete</a></li>
             </ul>
         </div>
