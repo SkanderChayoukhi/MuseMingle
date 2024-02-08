@@ -109,7 +109,7 @@ if ($resultCheck > 0) {
         <a href="./home.php">
             <img src="../allphoto/logo.png" alt="">
         </a>
-        <div class="navigation" style="padding-right: 200px;">
+        <div class="navigation" style="padding-right: 50px;padding-left:150px;">
             <ul>
                 <li><a href="./home.php">Home</a></li>
                 <li><a class="active" href="./gallerypage.php">Gallery</a></li>
@@ -123,13 +123,13 @@ if ($resultCheck > 0) {
     <div class="container" style="padding-top: 100px;">
         <div class="artwork">
             <div class="image-container">
-                <img src="<?php echo $url ?>" alt="Artwork Image" id="fullscreen-image">
+                <img src="<?php echo $url ?>" alt="Artwork Image" id="fullscreen-image" >
             </div>
         </div>
         <div class="info">
             <h1><?php echo $tt ?></h1>
             <div><p style="font-size: 20px;">by <i style="color:rgb(164, 7, 7);font-family:cursive;"><?php echo $nn ?></i></p></div>
-            <p class="price"> <?php echo $pp ?></p>
+            <p class="price"> <?php echo $pp ?> Dt</p>
             <ul class="details">
                 <li>Year:<?php echo $yy ?></li>
                 <li>Size: <?php echo $ss ?></li>
@@ -158,7 +158,7 @@ if ($resultCheck > 0) {
         
     </div>
     <div class="container2">
-        <h3>Other listings from name of the artist:</h3>
+        <h3>Other listings from <?php echo $nn ?>:</h3>
         <div class="first" style="padding-left: 190px;padding-right: 0px;"><a href="<?php echo 'IMG.php?url=' . urlencode($related_image_urls[0]); ?>" target="_blank"><img src="<?php echo $related_image_urls[0]; ?>"></a></div>
         <div class="second" style="padding-left: 0px;"><a href="<?php echo 'IMG.php?url=' . urlencode($related_image_urls[1]); ?>" target="_blank"><img src="<?php echo $related_image_urls[1]; ?>"></a></div>
         <div class="third"><a href="<?php echo 'IMG.php?url=' . urlencode($related_image_urls[2]); ?>" target="_blank"><img src="<?php echo $related_image_urls[2]; ?>"></a></div>
@@ -219,6 +219,7 @@ if ($resultCheck > 0) {
         }
         });
     </script>
+
 
 </body>
 
