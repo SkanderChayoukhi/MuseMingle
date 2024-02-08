@@ -1,6 +1,6 @@
 <?php
 
-  $conn = mysqli_connect("0c1b-102-158-196-8.ngrok-free.app","root","","musemingle2");
+  $conn = mysqli_connect("localhost","root","","musemingle2");
   if ($_SERVER["REQUEST_METHOD"]== "POST"){
     $titre = $_POST["titre"];
     $url_image = $_POST["url_image"];
