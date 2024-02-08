@@ -112,7 +112,7 @@ if ($resultCheck > 0) {
         <div class="navigation" style="padding-right: 200px;">
             <ul>
                 <li><a href="./home.php">Home</a></li>
-                <li><a class="active" href="../allhtml/index2.html">Gallery</a></li>
+                <li><a class="active" href="./gallerypage.php">Gallery</a></li>
                 <li><a  href="">Contact us</a></li>
                 <li><a  href="">games</a></li>
                 <li><a class="delete-button" href="#">Delete</a></li>
