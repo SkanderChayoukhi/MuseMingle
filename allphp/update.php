@@ -39,7 +39,7 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        background-color: #ccc;
+        background-image: url('https://media.artsper.com/homepage/mainImageThematic.jpg?fbclid=IwAR1FTk27uGO9U5NrNWFwp55A6JsmAGRoZqhUyW8s-dmgXHQ9Sj5VXsnCd2I')
     }
     form {
         background-color: rgba(255, 255, 255, 0.5);
