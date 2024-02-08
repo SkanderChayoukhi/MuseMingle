@@ -1,19 +1,16 @@
 <?php
 
-
 $conn = mysqli_connect("localhost", "root", "", "musemingle");
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-
 $message = '';
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    $id = mysqli_real_escape_string($conn, $_POST["id"]);
-    $url = mysqli_real_escape_string($conn, $_POST["url"]);
+    $type = mysqli_real_escape_string($conn, $_POST["type"]);
+    $url_image= mysqli_real_escape_string($conn, $_POST["url_image"]);
     $title = mysqli_real_escape_string($conn, $_POST["title"]);
     $price = mysqli_real_escape_string($conn, $_POST["price"]);
     $year = mysqli_real_escape_string($conn, $_POST["year"]);
@@ -25,120 +22,89 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $shipping = mysqli_real_escape_string($conn, $_POST["shipping"]);
     $nomArtist = mysqli_real_escape_string($conn, $_POST["nomArtist"]);
     $descriptionArtist = mysqli_real_escape_string($conn, $_POST["descriptionArtist"]);
-    $photoArtist = mysqli_real_escape_string($conn, $_POST["photoArtist"]);
+    $photo_artiste = mysqli_real_escape_string($conn, $_POST["photo_artiste"]);
 
-    
-    $sql_insert = "INSERT INTO painting (id, url, title, price, year, size, signed, frame, style, subject, shipping, nomArtist, descriptionArtist, photoArtist) 
-    VALUES ('$id', '$url', '$title', '$price', '$year', '$size', '$signed', '$frame', '$style', '$subject', '$shipping', '$nomArtist', '$descriptionArtist', '$photoArtist')";
+    // Determine the table name based on the selected type
+    $table_name = "";
+    switch ($type) {
+        case 'drawings':
+            $table_name = "drawings";
+            break;
+        case 'photography':
+            $table_name = "photography";
+            break;
+        case 'paintings':
+            $table_name = "paintings";
+            break;
+        default:
+            header("Location: ./create.php");
+            break;
+    }
+
+    // Insert data into the appropriate table
+    $sql_insert = "INSERT INTO $table_name (url_image, title, price, year, size, signed, frame, style, subject, shipping, nomArtist, descriptionArtist, photo_artiste) 
+    VALUES ('$url_image', '$title', '$price', '$year', '$size', '$signed', '$frame', '$style', '$subject', '$shipping', '$nomArtist', '$descriptionArtist', '$photo_artiste')";
 
     if (mysqli_query($conn, $sql_insert)) {
-        $message = "Nouvel enregistrement créé avec succès.";
+        header("Location: ../allhtml/index2.html");
     } else {
-        $message = "Erreur lors de la création de l'enregistrement: " . mysqli_error($conn);
+        header("Location: ./create.php");
     }
 }
-
 
 mysqli_close($conn);
 
 ?>
+
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un nouvel enregistrement</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../allcss/addart.css">
 </head>
 
-<style>
-   
-        body {
-           
-            background-size:cover;
-            background-position:center;
-          
-        
-        }
-        .container {
-            background-color: rgba(255, 255, 255, 0.5); /* Fond transparent avec une opacité de 50% */
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            max-width: 500px;
-            margin: 50px auto;
-            color: #333;
-            display:grid;
-            grid-template-columns:50% 50%;
-            grid-template-rows:  400 px 200px 200px 200px 200px 200px 200px 200px 400px;
-}
-
-        .btn-primary {
-            background-color: rgb(164, 7, 7); 
-            border-color: rgb(164, 7, 7); 
-            color: #fff; 
-            transition: background-color 0.3s ease;
-            border-radius: 20px; 
-            padding: 12px 20px; 
-            font-size: 16px; 
-            cursor: pointer; 
-            display: block; 
-            margin-top: 10px; 
-        }
-
-        .btn-primary:hover {
-            background-color: #cc0000; 
-            border-color: #cc0000; 
-        }
-
-        .form-group {
-            margin-bottom: 8px; 
-        }
-
-        .form-group label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            background-color: #f9f9f9;
-            color: #333; 
-            border: none;
-            border-radius: 20px;
-            padding: 12px 20px; 
-            margin-bottom: 10px
-            transition: all 0.3s ease;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-control:focus {
-            background-color: #fff;
-            border: 2px solid #ff0000; 
-            outline: none;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-        }
-
-        h2 {
-            text-align: center;
-            color: #333; 
-            margin-bottom: 15px;
-        }
-    </style>
 <body style="background-image :url('https://media.artsper.com/homepage/mainImageThematic.jpg') ">
+    <section>
+    <nav>
+        <a href="./home.php">
+            <img src="../allphoto/logo.png" alt="">
+        </a>
+        
+        <div class="navigation">
+            <ul>
+                <li><a href="./home.php">Home</a></li>
+                <li><a href="../allhtml/index2.html">Gallery</a></li>
+                <li><a class="active" href="">Add Art</a></li>
+                <li><a href="">Contact us</a></li>
+                <li><a href="">games</a></li>
+            </ul>
+        </div>
+    </nav>
+    </section>
     <div >
         <form method="POST" class="container">
-        <h2 style ="grid-column:1/3;grid-row:1/2;font-family:cursive;color:rgb(164, 7, 7);"><i>ADD A New Photo</i></h2>
-            <div class="form-group" style ="grid-column:1/2;grid-row:2/3;padding-right:20px;">
-                <label for="id"></label>
-                <input type="text" class="form-control" id="id" name="id" placeholder="ID">
+        <h2 style ="grid-column:1/3;grid-row:1/2;font-family:cursive;color:rgb(164, 7, 7);"><i> ADD A New Art</i></h2>
+            <div class="form-group" style="grid-column:1/3;grid-row:2/3;padding-right:20px;">
+                <label for="type"></label>
+                <select class="form-control-type" id="type" name="type">
+                    <option value="" disabled selected>Select category</option>
+                    <option value="paintings">Paintings</option>
+                    <option value="photography">Photography</option>
+                    <option value="drawings">Drawings</option>
+                </select>
             </div>
+            <!-- Removed ID input as it may not be needed -->
             <div class="form-group" style ="grid-column:1/2;grid-row:3/4;padding-right:20px;">
-                <label for="url"></label>
-                <input type="text" class="form-control" id="url" name="url" placeholder="URL">
-            </div>
-            <div class="form-group" style ="grid-column:2/3;grid-row:2/3;padding-left:20px">
                 <label for="title"></label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+            </div>
+            <div class="form-group" style ="grid-column:2/3;grid-row:2/3;padding-left:20px">
+                <label for="url_image"></label>
+                <input type="text" class="form-control" id="url_image" name="url_image" placeholder="URL">
             </div>
             <div class="form-group" style ="grid-column:2/3;grid-row:3/4;padding-left:20px">
                 <label for="price"></label>
@@ -181,8 +147,8 @@ mysqli_close($conn);
                 <input type="text" class="form-control" id="descriptionArtist" name="descriptionArtist" placeholder="Description Artist">
             </div>
             <div class="form-group"style ="grid-column:1/2;grid-row:8/9;padding-right:20px;">
-                <label for="photoArtist"></label>
-                <input type="text" class="form-control" id="photoArtist" name="photoArtist" placeholder="Photo Artist">
+                <label for="photo_artiste"></label>
+                <input type="text" class="form-control" id="photo_artiste" name="photo_artiste" placeholder="Photo Artist">
             </div>
             <button type="submit" class="btn btn-primary btn-block"style ="grid-column:1/3;grid-row:9/10">ADD</button>
         </form>
@@ -190,3 +156,4 @@ mysqli_close($conn);
 </body>
 
 </html>
+
