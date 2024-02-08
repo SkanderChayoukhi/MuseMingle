@@ -42,28 +42,44 @@
         background-color: #ccc;
     }
     form {
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.5);
         padding: 20px;
         border-radius: 5px;
-        width: 400px;
+        width: 800px; /* Adjust the width as needed */
         margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
     }
-    label {
+    .form-group {
+        width: 50%; /* Set each column to occupy 50% of the form width */
+        box-sizing: border-box;
+        padding: 0 15px;
+    }
+    .form-group label {
         font-weight: bold;
         display: block;
         margin-bottom: 5px;
     }
-    input[type="text"],
-    input[type="url"],
-    input[type="number"],
-    select,
-    textarea {
+    .form-group input[type="text"],
+    .form-group input[type="url"],
+    .form-group input[type="number"],
+    .form-group select,
+    .form-group textarea {
         width: 100%;
         padding: 8px;
         margin-bottom: 10px;
         border: 1px solid #aaa;
         border-radius: 4px;
         box-sizing: border-box;
+    }
+    .form-group textarea {
+        height: 100px; /* Adjust the height as needed */
+        resize: vertical;
+    }
+    .center-btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
     }
     input[type="submit"] {
         background-color: rgb(164, 7, 7);
@@ -73,9 +89,6 @@
         border-radius: 4px;
         cursor: pointer;
     }
-    .center-btn {
-        text-align: center;
-    }
     input[type="submit"]:hover {
         background-color: #8e0202;
     }
@@ -84,47 +97,73 @@
 <body>
 
 <form action="#" method="post">
-    <label for="titre">Title:</label>
-    <input type="text" id="titre" name="titre" value="<?php echo $user[0]["title"] ?>">
+    <div class="form-group">
+        <label for="titre">Title:</label>
+        <input type="text" id="titre" name="titre" value="<?php echo $user[0]["title"] ?>">
+    </div>
 
-    <label for="url_image">Image URL:</label>
-    <input type="url" id="url_image" name="url_image" value="<?php echo $user[0]["url_image"] ?>">
+    <div class="form-group">
+        <label for="url_image">Image URL:</label>
+        <input type="url" id="url_image" name="url_image" value="<?php echo $user[0]["url_image"] ?>">
+    </div>
 
-    <label for="price">Price:</label>
-    <input type="number" id="price" name="price" step="0.01" value="<?php echo $user[0]["price"] ?>">
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" step="0.01" value="<?php echo $user[0]["price"] ?>">
+    </div>
 
-    <label for="size">Size:</label>
-    <input type="text" id="size" name="size" value="<?php echo $user[0]["size"] ?>">
+    <div class="form-group">
+        <label for="size">Size:</label>
+        <input type="text" id="size" name="size" value="<?php echo $user[0]["size"] ?>">
+    </div>
 
-    <label for="frame">Frame:</label>
-    <input type="text" id="frame" name="frame" value="<?php echo $user[0]["frame"] ?>">
+    <div class="form-group">
+        <label for="frame">Frame:</label>
+        <input type="text" id="frame" name="frame" value="<?php echo $user[0]["frame"] ?>">
+    </div>
 
-    <label for="year">Year:</label>
-    <input type="text" id="year" name="year" value="<?php echo $user[0]["year"] ?>">
+    <div class="form-group">
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" value="<?php echo $user[0]["year"] ?>">
+    </div>
 
-    <label for="signed">signed</label>
-    <input type="text" id="signed" name="signed" value="<?php echo $user[0]["signed"] ?>">
+    <div class="form-group">
+        <label for="signed">Signed:</label>
+        <input type="text" id="signed" name="signed" value="<?php echo $user[0]["signed"] ?>">
+    </div>
 
-    <label for="style">Style:</label>
-    <input type="text" id="style" name="style" value="<?php echo $user[0]["style"] ?>">
+    <div class="form-group">
+        <label for="style">Style:</label>
+        <input type="text" id="style" name="style" value="<?php echo $user[0]["style"] ?>">
+    </div>
 
-    <label for="subject">Subject:</label>
-    <input type="text" id="subject" name="subject" value="<?php echo $user[0]["subject"] ?>">
+    <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" value="<?php echo $user[0]["subject"] ?>">
+    </div>
 
-    <label for="shipping">Shipping:</label>
-    <input type="text" id="shipping" name="shipping" value="<?php echo $user[0]["shipping"] ?>">
+    <div class="form-group">
+        <label for="shipping">Shipping:</label>
+        <input type="text" id="shipping" name="shipping" value="<?php echo $user[0]["shipping"] ?>">
+    </div>
 
-    <label for="nomArtist">Artist's Name:</label>
-    <input type="text" id="nomArtist" name="nomArtist" value="<?php echo $user[0]["nomArtist"] ?>">
+    <div class="form-group">
+        <label for="nomArtist">Artist's Name:</label>
+        <input type="text" id="nomArtist" name="nomArtist" value="<?php echo $user[0]["nomArtist"] ?>">
+    </div>
 
-    <label for="descriptionArtist">Artist's Description:</label>
-    <textarea id="descriptionArtist" name="descriptionArtist" rows="4" value="<?php echo $user[0]["descriptionArtist"] ?>"></textarea>
+    <div class="form-group">
+        <label for="descriptionArtist">Artist's Description:</label>
+        <textarea id="descriptionArtist" name="descriptionArtist" rows="4"><?php echo $user[0]["descriptionArtist"] ?></textarea>
+    </div>
 
-    <label for="photo_artiste">Artist's Photo:</label>
-    <input type="url" id="photo_artiste" name="photo_artiste" value="<?php echo $user[0]["photo_artiste"] ?>">
+    <div class="form-group">
+        <label for="photo_artiste">Artist's Photo:</label>
+        <input type="url" id="photo_artiste" name="photo_artiste" value="<?php echo $user[0]["photo_artiste"] ?>">
+    </div>
 
     <div class="center-btn">
-        <input type="submit" >
+        <input type="submit">
     </div>
 </form>
 
