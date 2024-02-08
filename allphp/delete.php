@@ -28,7 +28,7 @@ if(isset($_GET['url'])) {
     // Check if any of the deletion queries were successful
     if($result1 || $result2 || $result3) {
         // Redirect to a success page or display a success message
-        header("Location: ../allhtml/index2.html");
+        header("Location: ./gallerypage.php");
         exit();
     } else {
         // Redirect back to the referring URL (img.php) in case of an error

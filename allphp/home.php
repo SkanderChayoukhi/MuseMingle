@@ -425,7 +425,7 @@ nav .navigation ul li a.active{
         <div class="navigation">
             <ul>
                 <li><a class="active" href="#">Home</a></li>
-                <li><a href="../allhtml/index2.html">Gallery</a></li>
+                <li><a href="./gallerypage.php">Gallery</a></li>
                 <li><a  href="">Contact us</a></li>
                 <li><a  href="">games</a></li>
             </ul>

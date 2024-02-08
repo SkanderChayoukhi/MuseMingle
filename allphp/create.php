@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     VALUES ('$url_image', '$title', '$price', '$year', '$size', '$signed', '$frame', '$style', '$subject', '$shipping', '$nomArtist', '$descriptionArtist', '$photo_artiste')";
 
     if (mysqli_query($conn, $sql_insert)) {
-        header("Location: ../allhtml/index2.html");
+        header("Location: ./gallerypage.php");
     } else {
         header("Location: ./create.php");
     }
@@ -77,7 +77,7 @@ mysqli_close($conn);
         <div class="navigation">
             <ul>
                 <li><a href="./home.php">Home</a></li>
-                <li><a href="../allhtml/index2.html">Gallery</a></li>
+                <li><a href="./gallerypage.php">Gallery</a></li>
                 <li><a class="active" href="">Add Art</a></li>
                 <li><a href="">Contact us</a></li>
                 <li><a href="">games</a></li>
