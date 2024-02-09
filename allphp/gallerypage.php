@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../allcss/style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"  />
 
     <title>Image Gallery</title>
 </head>
@@ -29,20 +30,28 @@
         <div class="gallery-categories" id="gallery-categories">
             <div class="category-container">
                 <div class="category" data-category="all">
-                    <img src="../allphoto/all.png" alt="all">
-                    <h2>ALL</h2>
+                      <div class="icon-container clicked">
+                          <i class="fa-regular fa-images"></i>
+                       </div>
+                    <h4>ALL</h4>
                 </div>
                 <div class="category" data-category="paintings">
-                    <img src="../allphoto/paintings.png" alt="Painting Icon">
-                    <h2>Paintings</h2>
+                           <div class="icon-container">
+                              <i class="fa-solid fa-palette"></i>
+                         </div>
+                        <h4>Paintings</h4>
                 </div>
                 <div class="category" data-category="photography">
-                    <img src="../allphoto/photography.png" alt="Photography Icon">
-                    <h2>Photography</h2>
+                     <div class="icon-container">
+                              <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <h4>Photography</h4>
                 </div>
                 <div class="category" data-category="drawings">
-                    <img src="../allphoto/drawings.png" alt="Drawings Icon">
-                    <h2>Drawings</h2>
+                      <div class="icon-container">
+                          <i class="fa-solid fa-pen"></i>
+                     </div>
+                    <h4>Drawings</h4>
                 </div>
             </div>
         </div>
@@ -62,6 +71,22 @@
             <div class="pagination" id="pagination"></div>
         </div>
     </section>
+    <script> 
+    document.addEventListener("DOMContentLoaded", function() {
+    const iconContainers = document.querySelectorAll(".icon-container");
+
+    iconContainers.forEach(function(iconContainer) {
+        iconContainer.addEventListener("click", function() {
+            // Remove the 'clicked' class from all icon containers
+            iconContainers.forEach(function(container) {
+                container.classList.remove("clicked");
+            });
+            // Add the 'clicked' class to the clicked icon container
+            iconContainer.classList.add("clicked");
+        });
+    });
+});
+ </script>
 
 
     <script src="../alljs/script2.js"></script>
