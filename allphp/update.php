@@ -152,6 +152,5 @@ if (isset($_GET["id"]) && isset($_GET["category"])) {
 
 </body>
 
-</body>
 
 </html>
