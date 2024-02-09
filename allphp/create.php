@@ -62,7 +62,7 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un nouvel enregistrement</title>
+    <title>Add a new artwork</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../allcss/addart.css">
 </head>
@@ -76,11 +76,8 @@ mysqli_close($conn);
         
         <div class="navigation">
             <ul>
-                <li><a href="./home.php">Home</a></li>
-                <li><a href="./gallerypage.php">Gallery</a></li>
                 <li><a class="active" href="">Add Art</a></li>
-                <li><a href="">Contact us</a></li>
-                <li><a href="">games</a></li>
+                <li><a href="./gallerypage.php">Undo</a></li>
             </ul>
         </div>
     </nav>

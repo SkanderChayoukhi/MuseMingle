@@ -10,7 +10,7 @@
 </head>
 <body>
     <section>
-    <nav>
+    <nav id="navbar" class="navbar" style="top: 0px; transition: top 0.6s ease-in-out 0s;" >
         <a href="../allphp/home.php">
             <img src="../allphoto/logo.png" alt="">
         </a>
@@ -90,6 +90,23 @@
 
 
     <script src="../alljs/script2.js"></script>
+    <script>
+        let prevScrollPos = window.pageYOffset;
+
+window.onscroll = function() {
+    const currentScrollPos = window.pageYOffset;
+
+    if (prevScrollPos > currentScrollPos) {
+// Scrolling up, show the navbar
+         document.getElementById("navbar").style.top = "0";
+    } else {
+// Scrolling down, hide the navbar
+          document.getElementById("navbar").style.top = `-${document.getElementById("navbar").offsetHeight}px`;
+    }
+
+    prevScrollPos = currentScrollPos;
+};
+    </script>
 </body>
 </html>
 

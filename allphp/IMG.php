@@ -6,7 +6,7 @@ $dbName = "musemingle";
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
 $url = isset($_GET['url']) ? mysqli_real_escape_string($conn, $_GET['url']) : '';
-$related_image_urls = array();
+$related_image = array();
 
 $sql = "SELECT * FROM drawings WHERE url_image='$url'";
 $result = mysqli_query($conn, $sql);
@@ -22,6 +22,7 @@ $resultCheck2 = mysqli_num_rows($result2);
 
 if ($resultCheck > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
+        $id =$row['id'];
         $tt = $row['title'];
         $nn = $row['nomArtist'];
         $pp = $row['price'];
@@ -34,18 +35,21 @@ if ($resultCheck > 0) {
         $sh = $row['shipping'];
         $dd = $row['descriptionArtist'];
         $arr = $row['photo_artiste'];
-        $sql = "SELECT url_image FROM drawings WHERE nomArtist='$nn' AND url_image!='$url'";
+        $sql = "SELECT id,url_image FROM drawings WHERE nomArtist='$nn' AND id!='$id'";
         $result_related = mysqli_query($conn, $sql);
         $i = 1;
         if ($result_related) {
-            while ($row1 = mysqli_fetch_assoc($result_related) and $i <= 4) {
-                $related_image_urls[] = $row1['url_image'];
+            while ($row1 = mysqli_fetch_assoc($result_related) and $i <= 12) {
+                $related_image[] = $row1['url_image'];
+                $related_image[] = $row1['id'];
+                $related_image[] = "drawings";
                 $i = $i + 1;
             }
         }
     }
 } elseif ($resultCheck1 > 0) {
     while ($row = mysqli_fetch_assoc($result1)) {
+        $id =$row['id'];
         $tt = $row['title'];
         $nn = $row['nomArtist'];
         $pp = $row['price'];
@@ -58,18 +62,21 @@ if ($resultCheck > 0) {
         $sh = $row['shipping'];
         $dd = $row['descriptionArtist'];
         $arr = $row['photo_artiste'];
-        $sql = "SELECT url_image FROM paintings WHERE nomArtist='$nn' AND url_image!='$url'";
+        $sql = "SELECT id,url_image FROM paintings WHERE nomArtist='$nn' AND id!='$id'";
         $result_related = mysqli_query($conn, $sql);
         $i = 1;
         if ($result_related) {
-            while ($row1 = mysqli_fetch_assoc($result_related) and $i <= 4) {
-                $related_image_urls[] = $row1['url_image'];
+            while ($row1 = mysqli_fetch_assoc($result_related) and $i <= 12) {
+                $related_image[] = $row1['url_image'];
+                $related_image[] = $row1['id'];
+                $related_image[] ="paintings";
                 $i = $i + 1;
             }
         }
     }
 } elseif ($resultCheck2 > 0) {
     while ($row = mysqli_fetch_assoc($result2)) {
+        $id =$row['id'];
         $tt = $row['title'];
         $nn = $row['nomArtist'];
         $pp = $row['price'];
@@ -82,12 +89,14 @@ if ($resultCheck > 0) {
         $sh = $row['shipping'];
         $dd = $row['descriptionArtist'];
         $arr = $row['photo_artiste'];
-        $sql = "SELECT url_image FROM photography WHERE nomArtist='$nn' AND url_image!='$url'";
+        $sql = "SELECT id,url_image FROM photography WHERE nomArtist='$nn' AND id!='$id'";
         $result_related = mysqli_query($conn, $sql);
         $i = 1;
         if ($result_related) {
-            while ($row1 = mysqli_fetch_assoc($result_related) and $i <= 4) {
-                $related_image_urls[] = $row1['url_image'];
+            while ($row1 = mysqli_fetch_assoc($result_related) and $i <= 12) {
+                $related_image[] = $row1['url_image'];
+                $related_image[] = $row1['id'];
+                $related_image[] = "photography";
                 $i = $i + 1;
             }
         }
@@ -159,13 +168,29 @@ if ($resultCheck > 0) {
         
     </div>
     <div class="container2">
-        <h3>Other listings from <?php echo $nn ?>:</h3>
-        <div class="first" style="padding-left: 190px;padding-right: 0px;"><a href="<?php echo 'IMG.php?url=' . urlencode($related_image_urls[0]); ?>" target="_blank"><img src="<?php echo $related_image_urls[0]; ?>"></a></div>
-        <div class="second" style="padding-left: 0px;"><a href="<?php echo 'IMG.php?url=' . urlencode($related_image_urls[1]); ?>" target="_blank"><img src="<?php echo $related_image_urls[1]; ?>"></a></div>
-        <div class="third"><a href="<?php echo 'IMG.php?url=' . urlencode($related_image_urls[2]); ?>" target="_blank"><img src="<?php echo $related_image_urls[2]; ?>"></a></div>
-        <div class="four" style="padding-right: 100px;"><a href="<?php echo 'IMG.php?url=' . urlencode($related_image_urls[3]); ?>" target="_blank"><img src="<?php echo $related_image_urls[3]; ?>"></a></div>
-
+    <h3>Other listings from <?php echo $nn ?>:</h3>
+    <div class="first" style="padding-left: 190px;padding-right: 0px;">
+        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[0]) . '&id=' . urlencode($related_image[1]) . '&category=' . urlencode($related_image[2]); ?>" target="_blank">
+            <img src="<?php echo $related_image[0]; ?>">
+        </a>
     </div>
+    <div class="second" style="padding-left: 0px;">
+        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[3]) . '&id=' . urlencode($related_image[4]) . '&category=' . urlencode($related_image[5]); ?>" target="_blank">
+            <img src="<?php echo $related_image[3]; ?>">
+        </a>
+    </div>
+    <div class="third">
+        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[6]) . '&id=' . urlencode($related_image[7]) . '&category=' . urlencode($related_image[8]); ?>" target="_blank">
+            <img src="<?php echo $related_image[6]; ?>">
+        </a>
+    </div>
+    <div class="four" style="padding-right: 100px;">
+        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[9]) . '&id=' . urlencode($related_image[10]) . '&category=' . urlencode($related_image[11]); ?>" target="_blank">
+            <img src="<?php echo $related_image[9]; ?>">
+        </a>
+    </div>
+</div>
+
 
     <script> 
          let prevScrollPos = window.pageYOffset;
