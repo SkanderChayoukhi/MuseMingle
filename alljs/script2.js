@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const searchInput = document.getElementById("searchInput");
     // const addImageButton = document.getElementById("addImageButton");
 
-    const serverURL = "http://localhost/php/projetjunior/MuseMingle/allphp/fetch_gallery_images2.php";
+    const serverURL = "http://localhost/php/MuseMingle/allphp/fetch_gallery_images2.php";
 
     async function fetchImagesFromCategory(category) {
         try {

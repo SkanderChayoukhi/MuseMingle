@@ -1,5 +1,5 @@
 <?php
-$conn=mysqli_connect("localhost","root","","musemingle");
+$conn=mysqli_connect("localhost","root","","musemingle1");
 if(!$conn){
     echo 'connection error!! :'. mysqli_connect_error();
 }
@@ -426,7 +426,7 @@ nav .navigation ul li a.active{
             <ul>
                 <li><a class="active" href="#">Home</a></li>
                 <li><a href="./gallerypage.php">Gallery</a></li>
-                <li><a  href="">Contact us</a></li>
+                <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="">games</a></li>
             </ul>
         </div>
@@ -460,12 +460,6 @@ nav .navigation ul li a.active{
                 palette
             </span>
             <h2>Paintings</h2>
-    </div></a>
-    <a class="artists"><div class="collection">
-            <span class="material-symbols-outlined">
-                person
-                </span>
-            <h2>artists</h2>
     </div></a>
     <a class="drawings"><div class="collection">
         
