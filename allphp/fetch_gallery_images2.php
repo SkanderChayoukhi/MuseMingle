@@ -1,7 +1,6 @@
 <?php
 
 header("Content-Type: application/json");
-
 // Replace these with your actual database connection details
 $host = "localhost";
 $username = "root";
@@ -20,13 +19,17 @@ if ($conn->connect_error) {
 $category = isset($_GET['category']) ? $_GET['category'] : '';
 
 // Use a parameterized query to avoid SQL injection
-$stmt = $conn->prepare("SELECT url_image, title, price, nomArtist FROM $category");
+$stmt = $conn->prepare("SELECT id,url_image, title, price, nomArtist FROM $category");
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result) {
     // Fetch the results properly
     $images = $result->fetch_all(MYSQLI_ASSOC);
+    // Add category to each image
+    foreach ($images as &$image) {
+        $image['category'] = $category;
+    }
 
     // Output the data as JSON
     echo json_encode($images);

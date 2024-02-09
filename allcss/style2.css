@@ -66,13 +66,13 @@ nav .navigation ul li a.active{
 .section2 .gallery-categories {
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 .section2 .category-container {
     border: 1px solid #333; 
     background-color: #fff; 
-    padding: 20px; 
+    padding: 10px; 
     display: flex; 
     border-radius: 5px; 
     margin-top: 100px;
@@ -84,29 +84,48 @@ nav .navigation ul li a.active{
     align-items: center;
     text-align: center;
     margin: 0 20px; 
-    cursor: pointer;
     padding: 20px;
-    border-radius: 5px; 
+
+}
+.section2 .icon-container {
+    cursor: pointer;
     transition: background-color 0.3s ease; 
 }
 
-.section2 .category:hover {
-    background-color:rgb(133, 5, 5);
+.section2 .icon-container:hover i {
+    color: rgb(131, 23, 23);
+}
+.section2 .icon-container.clicked i {
+    color: rgb(164, 7, 7);
 }
 
-.section2 .category img {
-    max-width: 50px;
-    height: 40px;
-    margin-bottom: 10px;
+
+.section2 .category h4 {
+    padding-top: 8px;
+    font-size: 12px;
 }
+
+.section2 .category-selected .icon-container {
+    color: rgb(164, 7, 7);
+}
+
+.section2 .icon-container i {
+    transition: color 0.3s ease;
+}
+
+/*.section2 .category:hover .icon-container{
+    background-color:rgb(223, 101, 101);
+}
+
 
 .section2 .category h2 {
-    margin: 0;
+    padding-top: 8px;
+    font-size: 12px;
 }
 
 .section2 .categorie-selected {
     background-color: rgb(164, 7, 7); 
-}
+}*/
 
 
 

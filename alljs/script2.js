@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const galleryContainer = document.getElementById("gallery");
     const paginationContainer = document.getElementById("pagination");
     const searchInput = document.getElementById("searchInput");
-    // const addImageButton = document.getElementById("addImageButton");
 
     const serverURL = "http://localhost/php/MuseMingle/allphp/fetch_gallery_images2.php";
 
@@ -13,10 +12,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             const data = await response.json();
 
             const imageDetails = data.map(item => ({
+                id: item.id,
                 url: item.url_image,
                 title: item.title,
                 artist: item.nomArtist,
-                price: item.price
+                price: item.price,
+                category: item.category // Include the category of each image
             }));
 
             return imageDetails;
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const displayedImages = images.slice(startIndex, endIndex);
 
         galleryContainer.innerHTML = "";
-        displayedImages.forEach(({ url, title, artist, price }) => {
+        displayedImages.forEach(({ url, title, artist, price, id, category }) => { // Pass the category of each image
             const imgContainer = document.createElement("div");
             imgContainer.classList.add("image-container");
 
@@ -54,7 +55,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             openButton.classList.add("open-button");
             openButton.addEventListener("click", () => {
                 const urlParam = encodeURIComponent(url); // Encode url
-                const allurl = `../allphp/IMG.php?url=${urlParam}`; // Construct URL with parameters
+                const idParam = encodeURIComponent(id); // Encode id
+                const categoryParam = encodeURIComponent(category); // Encode category
+                const allurl = `../allphp/IMG.php?url=${urlParam}&id=${idParam}&category=${categoryParam}`; // Construct URL with parameters
                 window.open(allurl, '_blank'); // Open new tab with the URL
             });
 
@@ -104,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     searchInput.addEventListener("input", async () => {
         const searchTerm = searchInput.value.toLowerCase();
         const filteredImages = allImages.filter(({ title }) => title.toLowerCase().includes(searchTerm));
-        displayImages(1, filteredImages); // Always start displaying from page 1
+        displayImages(1, filteredImages);
         displayPaginationButtons(filteredImages);
     });
 
@@ -119,21 +122,20 @@ document.addEventListener("DOMContentLoaded", async function () {
             const categoryName = category.getAttribute('data-category');
             currentCategory = categoryName;
 
+            let images;
             if (categoryName === 'all') {
                 const allCategories = ['paintings', 'photography', 'drawings'];
                 const promises = allCategories.map(cat => fetchImagesFromCategory(cat));
                 const imagesArrays = await Promise.all(promises);
-                allImages = imagesArrays.flat();
-                currentPage = 1; // Reset currentPage to 1 when switching to 'all' category
-                displayImages(currentPage, allImages);
-                displayPaginationButtons(allImages);
+                images = imagesArrays.flat();
             } else {
-                const images = await fetchImagesFromCategory(categoryName);
-                allImages = images;
-                currentPage = 1; // Reset currentPage to 1 when switching to another category
-                displayImages(currentPage, images);
-                displayPaginationButtons(images);
+                images = await fetchImagesFromCategory(categoryName);
             }
+            
+            allImages = images;
+            currentPage = 1; // Reset currentPage to 1 when switching to another category
+            displayImages(currentPage, images);
+            displayPaginationButtons(images);
         });
     });
 
@@ -142,18 +144,4 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (allCategoryButton) {
         allCategoryButton.click();
     }
-
-    // Add Image button functionality
-    // addImageButton.addEventListener("click", () => {
-    //     window.location.reload();
-    // });
-
-    // Fetch and display images based on the default category
-    const initialCategory = 'all';
-    const initialImages = await fetchImagesFromCategory(initialCategory);
-    allImages = initialImages;
-    displayImages(currentPage, initialImages);
-    displayPaginationButtons(initialImages);
 });
-
-          
