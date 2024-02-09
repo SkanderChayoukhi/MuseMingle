@@ -1,6 +1,6 @@
 <?php
 
-  $conn = mysqli_connect("localhost","root","","musemingle2");
+  $conn = mysqli_connect("localhost","root","","musemingle");
   if ($_SERVER["REQUEST_METHOD"]== "POST"){
     $titre = $_POST["titre"];
     $url_image = $_POST["url_image"];
