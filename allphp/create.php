@@ -67,7 +67,7 @@ mysqli_close($conn);
     <link rel="stylesheet" href="../allcss/addart.css">
 </head>
 
-<body style="background-image :url('https://media.artsper.com/homepage/mainImageThematic.jpg') ">
+<body style="background-image :url('../allphoto/contactbackground.jpg') ">
     <section>
     <nav>
         <a href="./home.php">
