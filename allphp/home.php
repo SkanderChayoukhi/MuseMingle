@@ -69,6 +69,7 @@ nav .navigation ul li a{
     font-size: 17px;
     font-weight: 500 ;
     transition: 0.3s ease;
+    font-family: sans-serif;
 }
 nav .navigation ul li select{
     background-color: white;
@@ -427,7 +428,7 @@ nav .navigation ul li a.active{
                 <li><a class="active" href="#">Home</a></li>
                 <li><a href="./gallerypage.php">Gallery</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
-                <li><a  href="">games</a></li>
+                <li><a  href="../games-page/jeux.html">games</a></li>
             </ul>
         </div>
     </nav>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="jeuxstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Protest+Revolution&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <img src="imgjeux/logo.png" alt="">
+        <div class="navigation">
+            <ul>
+                <li><a href="../allphp/home.php">Home</a></li>
+                <li><a href="../allphp/gallerypage.php">Gallery</a></li>
+                <li><a  href="../allphp/contact.php">Contact us</a></li>
+                <li><a class="active" href="">games</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="update"> </div>
+
+    <!-------------------------video-section------------------->
+
+
+    <div class="intro"> 
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="imgjeux/videogames.mp4" type="video/mp4">
+        </video>
+        <div class="content">
+            <a href="#">Games</a>
+        </div>
+        <div class="slider">
+            <div class="container">
+                <input type="radio" name="slider" id="s1" checked>
+                <input type="radio" name="slider" id="s2">
+                <input type="radio" name="slider" id="s3">
+                <div class="cards">
+                    <label for="s1" id="slide1">
+
+                    <div class="card">
+                        <div class="image">
+                            <img src="imgjeux/flipcard.jpg" alt="">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="infos">
+                            <a href="flipcard.html" class="btn-details">Memory-card Game</a>
+
+                        </div>
+                    </div>
+                    </label> 
+                    <label for="s2" id="slide2">
+
+                    <div class="card">
+                        <div class="image">
+                            <img src="imgjeux/hangman.png" alt="">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="infos">
+                            <a href="hangman.html" class="btn-details">Hangman Game</a>
+
+                        </div>
+                    </div>
+                    </label>   
+                    <label for="s3" id="slide3">
+
+                    <div class="card">
+                        <div class="image">
+                            <img src="imgjeux/quiz.jpg" alt="">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="infos">
+                            <a href="quiz/quiz.html" class="btn-details">Quiz Game</a>
+
+                        </div>
+                    </div>
+                    </label>      
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</body>
+</html>

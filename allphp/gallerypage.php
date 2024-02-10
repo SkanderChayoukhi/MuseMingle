@@ -21,7 +21,7 @@
                 <li><a class="active" href="">Gallery</a></li>
                 <li><a href="../allphp/create.php">Add Art</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
-                <li><a  href="">games</a></li>
+                <li><a  href="../games-page/jeux.html">games</a></li>
             </ul>
         </div>
     </nav>
