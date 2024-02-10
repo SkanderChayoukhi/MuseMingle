@@ -149,6 +149,7 @@ nav .navigation ul li a.active{
     gap: 30px; /* Increased gap between images */
     max-width: 3000px; /* Increased max-width */
     margin: 0 auto;
+    height: 100vh;
 }
 
 .section2 .gallery-controls {
@@ -215,7 +216,11 @@ nav .navigation ul li a.active{
     opacity: 0;
     box-sizing: border-box;
 }
-
+.section2 .openbutton {
+ 
+    cursor: pointer;
+   
+}
 .section2 .open-button {
     position: absolute;
     top: 0;
