@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <h1>Quiz</h1>
+        <div class="quiz">
+            <h2 id="question">question</h2>
+            <div id="answer_btn">
+                <button class="btn">answer</button>
+                <button class="btn">answer</button>
+                <button class="btn">answer</button>
+                <button class="btn">answer</button>
+            </div>
+            <button id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <script>
+    const questions=[
+        {//0
+            question: "Question : Quel artiste est souvent considéré comme le pionnier du mouvement impressionniste ?" ,
+            answers: [
+                {text: "a) Vincent van Gogh", correct: false},
+                {text: "b) Claude Monet", correct: true},
+                {text: "c) Pablo Picasso", correct: false},
+                {text: "d) Salvador Dalí", correct: false},
+            ]
+        },
+        {//1
+            question: "Question : Qui a peint 'La Joconde' ?" ,
+            answers: [
+                {text: "a) Vincent van Gogh", correct: false},
+                {text: "b) Leonardo da Vinci", correct: true},
+                {text: "c) Michel-Ange", correct: false},
+                {text: "d) Pablo Picasso", correct: false},
+            ]
+        },
+        {//2
+            question: "Question : Quel mouvement artistique est associé à Salvador Dalí et René Magritte ?" ,
+            answers: [
+                {text: "a) Cubisme", correct: false},
+                {text: "b) Surréalisme", correct: true},
+                {text: "c) Baroque", correct: false},
+                {text: "d) Romantisme", correct: false},
+            ]
+        },
+        {//3
+            question: "Question : Quelle période de l'histoire de l'art est caractérisée par des scènes de la vie quotidienne et des natures mortes détaillées ?" ,
+            answers: [
+                {text: "a) Renaissance", correct: true},
+                {text: "b) Baroque", correct: false},
+                {text: "c) Rococo", correct: false},
+                {text: "d) Réalisme", correct: false},
+            ]
+        },
+        {//3
+            question: "Question : Quel artiste est célèbre pour ses sculptures en bronze, dont 'Le Penseur' ?" ,
+            answers: [
+                {text: "a) Auguste Rodin", correct: true},
+                {text: "b) Pablo Picasso", correct: false},
+                {text: "c) Henry Moore", correct: false},
+                {text: "d) Michel-Ange", correct: false},
+            ]
+        },
+        {//3
+            question: "Question : Quel mouvement artistique est associé à Wassily Kandinsky et Kazimir Malevich ?" ,
+            answers: [
+                {text: "a) Art abstrait", correct: true},
+                {text: "b) Romantisme", correct: false},
+                {text: "c) Pop Art", correct: false},
+                {text: "d) Fauvisme", correct: false},
+            ]
+        },
+        {//3
+            question: "Question : Qui est l'auteur de la fresque célèbre 'La Cène' ?" ,
+            answers: [
+                {text: "a) Vincent van Gogh", correct: false},
+                {text: "b) Leonardo da Vinci", correct: true},
+                {text: "c) Michel-Ange", correct: false},
+                {text: "d) Raphaël", correct: false},
+            ]
+        },
+        {//3
+            question: "Question : Quel artiste est connu pour ses œuvres géométriques et abstraites, telles que 'Composition en rouge, jaune, bleu' ?" ,
+            answers: [
+                {text: "a) Piet Mondrian", correct: true},
+                {text: "b) Salvador Dalí", correct: false},
+                {text: "c) Henri Matisse", correct: false},
+                {text: "d) Jackson Pollock", correct: false},
+            ]
+        },
+        {//3
+            question: "Question : Quel courant artistique a inspiré les œuvres de Georges Seurat, notamment 'Un dimanche après-midi à l'Île de la Grande Jatte' ?" ,
+            answers: [
+                {text: "a) Impressionnisme", correct: false},
+                {text: "b) Pointillisme", correct: true},
+                {text: "c) Cubisme", correct: false},
+                {text: "d) Art déco", correct: false},
+            ]
+        },
+        {//3
+            question: "Question : Quelle artiste mexicaine est connue pour ses peintures surrealistes, dont 'Les Deux Frida' ?" ,
+            answers: [
+                {text: "a) Frida Kahlo", correct: true},
+                {text: "b) Georgia O'Keeffe", correct: false},
+                {text: "c) Tamara de Lempicka", correct: false},
+                {text: "d) Mary Cassatt", correct: false},
+            ]
+        },
+    ];
+    const questionElement= document.getElementById("question");
+    const answerButtons= document.getElementById("answer_btn");
+    const nextButton= document.getElementById("next-btn");
+    
+    let currentQuestionIndex=0;
+    let score=0;
+    
+    function startquiz(){
+        currentQuestionIndex=0;
+        score=0;
+        nextButton.innerHTML="Next" ;// because at the end we'll replace it with replay
+        showquestion();
+    }
+    
+    
+    function showquestion(){
+        resetstate(); //  hide  the next button until the right answer in selected
+        let currentquestion= questions[currentQuestionIndex]; //quiz1
+        let questionNo= currentQuestionIndex + 1 ;
+        questionElement.innerHTML= questionNo+'. '+ currentquestion.question; //contenu du question
+    
+        currentquestion.answers.forEach(answer => { //for each answer apply this function
+            const button=document.createElement("button");
+            button.innerHTML= answer.text;
+            button.classList.add('btn');
+            answerButtons.appendChild(button);
+            if(answer.correct){
+                button.dataset.correct = answer.correct; // zedt lel button dataset hatit feha el champ correct taa el array answer
+            }
+            button.addEventListener('click', selectanswer)
+        });
+    }
+    
+    function resetstate(){
+        nextButton.style.display='none';
+        while(answerButtons.firstChild){
+            answerButtons.removeChild(answerButtons.firstChild);
+        }
+    }
+    
+    
+    
+    function selectanswer(e){ //e ==> button: is the answers
+        const selectedButton=e.target;
+        const  iscorrect= (selectedButton.dataset.correct === "true") ; //si affecte dans ligne 65 snn prend false
+        if(iscorrect){
+            selectedButton.classList.add("correct"); //voir css
+            score++;
+        }else{
+            selectedButton.classList.add("incorrect"); //voir css
+        }
+        Array.from(answerButtons.children).forEach(button =>{ //hatina children taa el div answerButton fi array baad on va les parcourir
+            if(button.dataset.correct === "true"){
+                button.classList.add("correct");
+            }
+            button.disabled = true; //disable the click on all buttons
+        });
+        nextButton.style.display='block' ;
+    }
+    
+    nextButton.addEventListener('click', ()=>{
+        if(currentQuestionIndex < questions.length){
+            handlenextbtn();
+        }else{
+            startquiz();
+        }
+    })
+    
+    function handlenextbtn(){
+        currentQuestionIndex++;
+        if(currentQuestionIndex < questions.length){
+            showquestion();
+        }else{
+            showscore();
+        }
+    }
+    
+    function showscore(){
+        resetstate(); 
+        questionElement.innerHTML = ` you scored ${score} out of ${questions.length} ! ` ;
+        nextButton.innerHTML='play again' ;
+        nextButton.style.display='block';
+    
+    }
+    
+    startquiz();</script>
+</body>
+</html>

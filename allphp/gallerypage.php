@@ -22,6 +22,7 @@
                 <li><a href="../allphp/create.php">Add Art</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-page/jeux.html">games</a></li>
+                <li><a  href="../login&register/logout.php">logout</a></li>
             </ul>
         </div>
     </nav>

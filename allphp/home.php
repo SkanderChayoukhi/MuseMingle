@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION["user"])){//lign 38 in login.php==> if the 'yes' is transfered successfully
+  header("location:../allphpuser/home.php");
+}
+?>
+<?php
 $conn=mysqli_connect("localhost","root","","musemingle");
 if(!$conn){
     echo 'connection error!! :'. mysqli_connect_error();
@@ -142,7 +148,8 @@ nav .navigation ul li a.active{
   
   .typing-demo {
     width: 40ch;
-    animation: typing 2s steps(40), blink .5s step-end infinite alternate;
+    animation: typing 3.5s steps(40, end) 2s infinite, blink 3s step-end infinite;
+    animation-delay: 1s;
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid;
@@ -429,6 +436,7 @@ nav .navigation ul li a.active{
                 <li><a href="./gallerypage.php">Gallery</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-page/jeux.html">games</a></li>
+                <li><a  href="../login&register/logout.php">logout</a></li>
             </ul>
         </div>
     </nav>

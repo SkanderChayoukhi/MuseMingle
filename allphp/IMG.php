@@ -122,10 +122,11 @@ if ($resultCheck > 0) {
             <ul>
                 <li><a href="./home.php">Home</a></li>
                 <li><a class="active" href="./gallerypage.php">Gallery</a></li>
-                <li><a  href="">Contact us</a></li>
-                <li><a  href="">games</a></li>
+                <li><a  href="./contact.php">Contact us</a></li>
+                <li><a  href="../games-page/jeux.html">games</a></li>
                 <li><a  href="<?php echo"./update.php?id=".$_GET["id"]."&category=".$_GET['category'] ?>">update</a></li>
                 <li><a class="delete-button" href="#">Delete</a></li>
+                <li><a  href="../login&register/logout.php">logout</a></li>
             </ul>
         </div>
     </nav>
