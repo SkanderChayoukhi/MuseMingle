@@ -45,6 +45,14 @@ document.addEventListener("DOMContentLoaded", async function () {
             const imgElement = document.createElement("img");
             imgElement.src = url;
             imgElement.alt = "Gallery Image";
+            imgElement.classList.add("openbutton");
+            imgElement.addEventListener("click", () => {
+                const urlParam = encodeURIComponent(url); // Encode url
+                const idParam = encodeURIComponent(id); // Encode id
+                const categoryParam = encodeURIComponent(category); // Encode category
+                const allurl = `../allphp/IMG.php?url=${urlParam}&id=${idParam}&category=${categoryParam}`; // Construct URL with parameters
+                window.open(allurl, '_blank'); // Open new tab with the URL
+            });
 
             const detailsContainer = document.createElement("div");
             detailsContainer.classList.add("image-details");

@@ -1,5 +1,5 @@
 <?php
-$conn=mysqli_connect("localhost","root","","musemingle1");
+$conn=mysqli_connect("localhost","root","","musemingle");
 if(!$conn){
     echo 'connection error!! :'. mysqli_connect_error();
 }
