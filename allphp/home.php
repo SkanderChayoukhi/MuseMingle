@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION["user"])){//lign 38 in login.php==> if the 'yes' is transfered successfully
-  header("location:../login&register/login.php");
+  header("location:../allphpuser/home.php");
 }
 ?>
 <?php
@@ -436,7 +436,6 @@ nav .navigation ul li a.active{
                 <li><a href="./gallerypage.php">Gallery</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-page/jeux.html">games</a></li>
-                <li><a  href="../login&register/login.php">login</a></li>
                 <li><a  href="../login&register/logout.php">logout</a></li>
             </ul>
         </div>

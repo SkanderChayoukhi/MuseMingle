@@ -1,9 +1,5 @@
-<?php
-session_start();
-if(isset($_SESSION["user"])){//lign 38 in login.php==> if the 'yes' is transfered successfully
-  header("location:../allphp/home.php");
-}
-?>
+<!--if you want to stay on âge if u already loged in copy the !session in the home.php-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +29,7 @@ if (isset($_POST['login'])){
     if(password_verify($password,$user['pwd'])){
       session_start();
       $_SESSION["user"]="yes" ;
-      header("location:../allphp/home.php");
+      header("location:../allphp/home.php");//he loged in ===> became an admin
       die();
     }else{
       echo "<div style='background:#fc7a7a;margin-bottom: 5px;padding:2px 2px 2px 15px;border-radius: 10px;'>password invalid</div>";
@@ -41,9 +37,6 @@ if (isset($_POST['login'])){
   }else{
     echo "<div style='background:#fc7a7a;margin-bottom: 5px;padding:2px 2px 2px 15px;border-radius: 10px;'>account doesn't exist</div>";
   }
-
-
-
 }
 
 ?>

@@ -1,9 +1,4 @@
-<?php
-session_start();
-if(isset($_SESSION["user"])){//lign 38 in login.php==> if the 'yes' is transfered successfully
-  header("location:../allphp/home.php");
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
