@@ -1,4 +1,24 @@
 <?php
+session_start();
+
+// Initialize cart if not exists
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+// Function to add item to cart
+function addToCart($item) {
+    $_SESSION['cart'][] = $item;
+}
+
+// Check if form submitted and add item to cart
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addItem'])) {
+    // Sanitize and validate input (not shown in this example)
+    $itemName = $_POST['itemName'];
+    $itemPrice = $_POST['itemPrice'];
+    // Add item to cart
+    addToCart(['name' => $itemName, 'price' => $itemPrice]);
+}
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
@@ -111,6 +131,18 @@ if ($resultCheck > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artwork Page</title>
     <link rel="stylesheet" href="../allcss/PhotodDescription.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+    .cart-icon {
+        color: #333; /* Change color as needed */
+        font-size: 20px; /* Adjust font size as needed */
+    }
+  </style>
 </head>
 <body>
     <section>
@@ -125,6 +157,10 @@ if ($resultCheck > 0) {
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-phpuser/jeux.html">games</a></li>
                 <li><a  href="../login&register/login.php">login</a></li>
+                <li><a href="#" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cartCount" class="badge badge-pill badge-info">0</span>
+                </a></li>
                 
                 
             </ul>
@@ -151,9 +187,17 @@ if ($resultCheck > 0) {
                 <li>Shipping:<?php echo $sh ?></li>
            
                 <br>
-                <div class="buttons">
-                      <button class="add-to-cart">Add to Basket</button>
-                 </div>
+                
+                      <form method="post">
+                        <input type="hidden" name="addItem">
+                        <!-- Item details -->
+                        <input type="hidden" name="itemName" value="<?php echo $tt; ?>">
+                        <input type="hidden" name="itemPrice" value="<?php echo $pp; ?>">
+                        <div class="buttons">
+                        <button type="submit" class="btn btn-primary">Add to Basket</button>
+                      </div>
+                    </form>
+                 
                 <div class="buttons">
                       <button class="add-to-favorites">Add to my favorites</button>
                 </div>
@@ -247,6 +291,33 @@ if ($resultCheck > 0) {
         });
     </script>
 
+<script>
+    // Add event listener to "Add to Cart" button
+    document.querySelector('.add-to-cart').addEventListener('click', function() {
+        // Fetch item details from hidden input fields
+        var itemName = document.querySelector('input[name="itemName"]').value;
+        var itemPrice = document.querySelector('input[name="itemPrice"]').value;
+        
+        // Send item details to server using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', window.location.href, true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                // Handle success
+                alert('Item added to cart successfully!');
+            } else {
+                // Handle error
+                alert('Failed to add item to cart. Please try again later.');
+            }
+        };
+        xhr.onerror = function() {
+            // Handle connection error
+            alert('Connection error. Please try again later.');
+        };
+        xhr.send('addItem=true&itemName=' + encodeURIComponent(itemName) + '&itemPrice=' + encodeURIComponent(itemPrice));
+    });
+    </script>
 
 </body>
 
