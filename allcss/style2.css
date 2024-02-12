@@ -139,7 +139,7 @@ nav .navigation ul li a.active{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 110vh;
+    height: 130vh;
     background-color: #f0f0f0;
 }
 
@@ -207,7 +207,7 @@ nav .navigation ul li a.active{
 
 .section2 .image-details {
     position: absolute;
-    bottom: 0;
+    bottom: 15px;
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.7);

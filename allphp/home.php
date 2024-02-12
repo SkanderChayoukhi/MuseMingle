@@ -502,6 +502,36 @@ nav .navigation ul li a.active{
     </div> 
 </div>
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let photography = document.querySelector('.photography');
+        let drawings = document.querySelector('.drawings');
+        let paintings = document.querySelector('.paintings');
+        let container = document.querySelector('.container1');
+
+        function updateBoxes(images) {
+            let boxes = container.querySelectorAll('.box');
+            images.forEach((url, index) => {
+                boxes[index].style.backgroundImage = "url(" + url + ")";
+            });
+        }
+
+        photography.addEventListener('click', () => {
+            let photographyImages = <?php echo json_encode(array_column($photography, 'url_image')); ?>;
+            updateBoxes(photographyImages);
+        });
+
+        paintings.addEventListener('click', () => {
+            let paintingsImages = <?php echo json_encode(array_column($paintings, 'url_image')); ?>;
+            updateBoxes(paintingsImages);
+        });
+
+        drawings.addEventListener('click', () => {
+            let drawingsImages = <?php echo json_encode(array_column($drawings, 'url_image')); ?>;
+            updateBoxes(drawingsImages);
+        });
+    });
+</script>
+<script>
     let photography=document.querySelector('.photography');
     let drawings=document.querySelector('.drawings');
     let paintings=document.querySelector('.paintings');
