@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const paginationContainer = document.getElementById("pagination");
     const searchInput = document.getElementById("searchInput");
 
-    const serverURL = "http://localhost/php/projet%20SJE/MuseMingle/allphp/fetch_gallery_images2.php";
+    const serverURL = "http://localhost/php/projetjunior/MuseMingle/allphp/fetch_gallery_images2.php";
 
     async function fetchImagesFromCategory(category) {
         try {
