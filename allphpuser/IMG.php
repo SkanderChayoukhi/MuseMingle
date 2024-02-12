@@ -1,4 +1,36 @@
 <?php
+session_start();
+
+// Initialize cart if not exists
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+// Function to add item to cart
+function addToCart($item) {
+    $_SESSION['cart'][] = $item;
+}
+
+// Check if form submitted and add item to cart
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addItem'])) {
+    // Sanitize and validate input (not shown in this example)
+    $itemName = $_POST['itemName'];
+    $itemPrice = $_POST['itemPrice'];
+    // Add item to cart
+    addToCart(['name' => $itemName, 'price' => $itemPrice]);
+}
+
+// Function to get cart count
+function getCartCount() {
+    // Return cart count
+    echo count($_SESSION['cart']);
+    exit();
+}
+
+// Check if AJAX request to get cart count
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getCartCount'])) {
+    getCartCount();
+}
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
@@ -111,6 +143,18 @@ if ($resultCheck > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artwork Page</title>
     <link rel="stylesheet" href="../allcss/PhotodDescription.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+    .cart-icon {
+        color: #333; /* Change color as needed */
+        font-size: 20px; /* Adjust font size as needed */
+    }
+  </style>
 </head>
 <body>
     <section>
@@ -125,6 +169,10 @@ if ($resultCheck > 0) {
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-phpuser/jeux.html">games</a></li>
                 <li><a  href="../login&register/login.php">login</a></li>
+                <li><a href="cart.php" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cartCount" class="badge badge-pill badge-info">0</span>
+                </a></li>
                 
                 
             </ul>
@@ -151,9 +199,17 @@ if ($resultCheck > 0) {
                 <li>Shipping:<?php echo $sh ?></li>
            
                 <br>
-                <div class="buttons">
-                      <button class="add-to-cart">Add to Basket</button>
-                 </div>
+                
+                      <form method="post">
+                        <input type="hidden" name="addItem">
+                        <!-- Item details -->
+                        <input type="hidden" name="itemName" value="<?php echo $tt; ?>">
+                        <input type="hidden" name="itemPrice" value="<?php echo $pp; ?>">
+                        <div class="buttons">
+                        <button type="submit" class="btn btn-primary add-to-cart">Add to Basket</button>
+                      </div>
+                    </form>
+                 
                 <div class="buttons">
                       <button class="add-to-favorites">Add to my favorites</button>
                 </div>
@@ -245,7 +301,86 @@ if ($resultCheck > 0) {
             window.location.href = "./delete.php?url=<?php echo urlencode($url); ?>";
         }
         });
-    </script>
+   
+
+<!-- Replace the existing event listener for the "Add to Basket" button -->
+</script>
+
+<script>
+    // Function to add item to cart
+function addToCart(item) {
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+    // Define the request method, URL, and asynchronous flag
+    xhr.open('POST', '<?php echo $_SERVER['PHP_SELF']; ?>', true); // Use PHP_SELF to send the request to the same page
+    // Set the request header to specify form data
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // Define the onload function to handle the response
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            // On successful response, update the cart count
+            updateCartCount();
+        } else {
+            // On error, display an alert message
+            alert('Failed to add item to cart. Please try again later.');
+        }
+    };
+    // Define the onerror function to handle connection errors
+    xhr.onerror = function() {
+        alert('Connection error. Please try again later.');
+    };
+    // Encode the item object as a URL-encoded string
+    var formData = 'addItem=true&itemName=' + encodeURIComponent(item.name) + '&itemPrice=' + encodeURIComponent(item.price);
+    // Send the request with the form data
+    xhr.send(formData);
+}
+
+// Function to retrieve and update cart count
+function updateCartCount() {
+    // Fetch the cart count span element
+    var cartCountSpan = document.getElementById('cartCount');
+    // Fetch the cart count from the server-side script
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '<?php echo $_SERVER['PHP_SELF']; ?>?getCartCount=true', true); // Use PHP_SELF to send the request to the same page
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            // Log the response text for debugging
+            console.log('Response text:', xhr.responseText);
+            // Update the cart count span element with the retrieved count
+            cartCountSpan.innerText = xhr.responseText;
+        } else {
+            // On error, display an alert message
+            alert('Failed to retrieve cart count. Please try again later.');
+        }
+    };
+    xhr.onerror = function() {
+        alert('Connection error. Please try again later.');
+    };
+    xhr.send();
+}
+
+// Update cart count on page load
+updateCartCount();
+
+// Add event listener to "Add to Cart" button
+var addToCartButton = document.querySelector('.add-to-cart');
+if (addToCartButton) {
+    addToCartButton.addEventListener('click', function(event) {
+        // Prevent default form submission
+        event.preventDefault();
+        // Fetch item details from hidden input fields
+        var itemName = document.querySelector('input[name="itemName"]').value;
+        var itemPrice = document.querySelector('input[name="itemPrice"]').value;
+        // Add item to cart
+        addToCart({ name: itemName, price: itemPrice });
+    });
+} else {
+    console.error('No element found with class "add-to-cart"');
+}
+
+</script>
+
+
 
 
 </body>
