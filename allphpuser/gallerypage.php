@@ -1,3 +1,12 @@
+<?php 
+session_start();
+
+// Initialize cart if not exists
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +40,7 @@
                 <li><a  href="../games-phpuser/jeux.html">games</a></li>
                 <li><a  href="../login&register/login.php">login</a></li>
                 <li>
-                <a href="#" class="cart-icon">
+                <a href="cart.php" class="cart-icon">
                 <i class="fas fa-shopping-cart"></i>
                 <span id="cartCount" class="badge badge-pill badge-info">0</span>
                 </a>
@@ -100,7 +109,36 @@
             iconContainer.classList.add("clicked");
         });
     });
+    // Update cart count on page load
+    updateCartCount();
 });
+
+// Function to retrieve and update cart count from server
+function updateCartCount() {
+    // Fetch the cart count span element
+    var cartCountSpan = document.getElementById('cartCount');
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+    // Define the request method, URL, and asynchronous flag
+    xhr.open('GET', 'your_php_script_url_here?getCartCount=true', true);
+    // Define the onload function to handle the response
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            // Update the cart count span element with the retrieved count
+            cartCountSpan.innerText = xhr.responseText;
+        }
+    };
+    // Define the onerror function to handle connection errors
+    xhr.onerror = function() {
+        alert('Connection error. Please try again later.');
+    };
+    // Send the request
+    xhr.send();
+}
+
+// Update cart count on page load
+updateCartCount();
+
  </script>
 
 
@@ -121,6 +159,8 @@ window.onscroll = function() {
 
     prevScrollPos = currentScrollPos;
 };
+
+
     </script>
     
 </body>
