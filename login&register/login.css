@@ -12,8 +12,8 @@ body {
     padding: 60px;
     border-radius: 6px;
     box-shadow: 0 0 16px rgba(6, 6, 6, 0.1);
-    height: 520px;
-    width: 700px;
+    height: 64vh;
+    width: 74vh;
     border: black;
     background-color: transparent;
     backdrop-filter: blur(10px) ;

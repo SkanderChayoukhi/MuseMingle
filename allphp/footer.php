@@ -280,7 +280,7 @@ body .footer .content > div .image {
       <b>Links</b>
       <ul>
       <li><a href="#">Home</a></li>
-      <li><a href="#">Categories</a></li>
+      <li><a href="#">Gallery</a></li>
       <li><a href="#">Contact_us</a></li>
       <li><a href="#">Games</a></li>
       </ul></div>

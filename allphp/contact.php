@@ -161,8 +161,8 @@ nav .navigation ul li a.active{
                 <li><a href="./home.php">Home</a></li>
                 <li><a href="./gallerypage.php">Gallery</a></li>
                 <li><a  class="active" href="./contact.php">Contact us</a></li>
-                <li><a  href="../games-page/jeux.html">games</a></li>
-                <li><a  href="../login&register/logout.php">logout</a></li>
+                <li><a  href="../games-page/jeux.html">Games</a></li>
+                <li><a  href="../login&register/logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>

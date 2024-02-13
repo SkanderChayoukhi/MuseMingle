@@ -229,6 +229,13 @@ nav .navigation ul li a.active{
     margin-bottom: 80px;
     color: rgb(164, 7, 7);
 }
+.title2{
+    text-align: center;
+    font-family: Protest Revolution;
+    font-size: 30px;
+    margin-top: 45vh;
+    color: rgb(164, 7, 7);
+}
 @import url("https://fonts.googleapis.com/css2?family=Figtree&display=swap");
 .NEW {
 	display: grid;
@@ -431,8 +438,8 @@ nav .navigation ul li a.active{
                 <li><a class="active" href="#">Home</a></li>
                 <li><a href="./gallerypage.php">Gallery</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
-                <li><a  href="../games-phpuser/jeux.html">games</a></li>
-                <li><a  href="../login&register/login.php">login</a></li>
+                <li><a  href="../games-phpuser/jeux.html">Games</a></li>
+                <li><a  href="../login&register/login.php">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -543,38 +550,38 @@ nav .navigation ul li a.active{
 
 
 <!-----------------------------------3rd section--------------------------------->
-<div class="title1">
+<div class="title2">
     <h1>ABOUT US</h1>
 </div>
-<div class="update"></div>
+<div class="update">
 <section class="intro">   
         <div class="container">
             <div class="slide0">
                 <div class="item" style="background-image: url(../allphoto/painting.jpg);">
                     <div class="content">
                         <div class="name">Photography</div>
-                        <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
+                        <!-- <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div> -->
                       
                     </div>
                 </div>
                 <div class="item" style="background-image: url(../allphoto/artist.jpg);">
                     <div class="content">
                         <div class="name">explore the arts</div>
-                        <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
+                        <!-- <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div> -->
                         
                     </div>
                 </div>
                 <div class="item" style="background-image: url(../allphoto/drawing.jpg);">
                     <div class="content">
                         <div class="name">Paintings</div>
-                        <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
+                        <!-- <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div> -->
             
                     </div>
                 </div>
                 <div class="item" style="background-image: url(../allphoto/photography.jpg);">
                     <div class="content">
                         <div class="name">Drawings</div>
-                        <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div>
+                        <!-- <div class="descripton">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ab perferendis at, in qui similique quibusdam maxime aspernatur quam assumenda beatae sint modi ipsam molestiae accusamus necessitatibus id doloribus eaque.</div> -->
                         
                     </div>
                 </div>
@@ -585,6 +592,7 @@ nav .navigation ul li a.active{
             </div>
         </div>
     </section>
+    </div>
     <script>
         let next= document.querySelector('.next')
 let prev= document.querySelector('.prev')

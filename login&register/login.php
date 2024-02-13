@@ -1,5 +1,3 @@
-<!--if you want to stay on âge if u already loged in copy the !session in the home.php-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +7,20 @@
   <link rel="stylesheet" href="login.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Protest+Revolution&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Protest+Revolution&display=swap" rel="stylesheet">
+  <style>
+    .password-container {
+        position: relative;
+    }
+    .password-toggle {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+  </style>
 </head>
 <body style="background-image :url('../allphoto/loginregister.jpg'); background-position: fixed;
 background-size: cover; ">
@@ -44,24 +53,45 @@ if (isset($_POST['login'])){
     <div class="mb-3">
       <label style="color: white;" for="exampleInputEmail1" class="form-label">Email address</label>
       <input style="background-color: rgba(164, 164, 164, 0.975); border: none;" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name@example.com">
-      <div style="color: white;" id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      <!-- <div style="color: white;" id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
     </div>
-    <div class="mb-3">
+    <div class="mb-3 password-container">
       <label for="exampleInputPassword1" style="color: white;" class="form-label">Password</label>
-      <input type="password" name="password" class="form-control" style="background-color: rgba(164, 164, 164, 0.975); border: none;", id="exampleInputPassword1">
+      <input type="password" name="password" class="form-control" style="background-color: rgba(164, 164, 164, 0.975); border: none;" id="exampleInputPassword1">
+      <span class="password-toggle" onclick="togglePasswordVisibility()" style="margin-top: 1.6vh;">Show</span>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" style="color: white;" for="exampleCheck1">REMEMBER ME</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="forgot-password1" style="color: white;"  href="forgot_password.html" >Forgot Password?</a>
+      <label class="form-check-label" style="color: white;" for="exampleCheck1">REMEMBER ME</label>
+      <!-- <a class="forgot-password1" style="color: white;"  href="forgot_password.html" >Forgot Password?</a> -->
       
     </div>
     <input type="submit" name="login" value="login" class="btn btn-outline-dark" style="width: 100%; color: white; border: 2px solid white;" >
     <div class="signup-link">
+      <br>
       <p style="color: #fff;">Don't have an account?</p>
       <button onclick="window.location.href='signup.php'" type="button" style="color: white; border:2px solid white;" class="btn btn-outline-dark">Create Account</button>
+      <br><br>
+      <button onclick="window.location.href='../allphpuser/home.php'" type="button" style="color: white; border:2px solid white;" class="btn btn-outline-dark">Cancel</button>
     </div>
   </form>
   </div>
-  </body>
-  </html>
+
+  <script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("exampleInputPassword1");
+        var passwordToggle = document.querySelector(".password-toggle");
+        
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordToggle.textContent = "Hide";
+        } else {
+            passwordInput.type = "password";
+            passwordToggle.textContent = "Show";
+        }
+    }
+  </script>
+
+</body>
+</html>
+
