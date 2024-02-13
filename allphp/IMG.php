@@ -124,8 +124,6 @@ if ($resultCheck > 0) {
                 <li><a class="active" href="./gallerypage.php">Gallery</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-page/jeux.html">games</a></li>
-                <li><a  href="<?php echo"./update.php?id=".$_GET["id"]."&category=".$_GET['category'] ?>">update</a></li>
-                <li><a class="delete-button" href="#">Delete</a></li>
                 <li><a  href="../login&register/logout.php">logout</a></li>
             </ul>
         </div>
@@ -138,6 +136,10 @@ if ($resultCheck > 0) {
             </div>
         </div>
         <div class="info">
+            <div>
+            <button id="UpdateImageButton" style="padding: 12px 18px; background-color: rgb(164, 7, 7);color: white;border: none;border-radius: 8px; cursor: pointer;margin-left: 66vh">Update</button>
+            <button id="DeleteImageButton" style="padding: 12px 18px; background-color: rgb(164, 7, 7);color: white;border: none;border-radius: 8px; cursor: pointer;margin-left: 66.3vh;margin-top: 1vh">Delete</button>
+            </div>
             <h1><?php echo $tt ?></h1>
             <div><p style="font-size: 20px;">by <i style="color:rgb(164, 7, 7);font-family:cursive;"><?php echo $nn ?></i></p></div>
             <p class="price"> <?php echo $pp ?> Dt</p>
@@ -237,15 +239,21 @@ if ($resultCheck > 0) {
             }
         }
 
+    
+    </script>
+    <script>
+    document.getElementById("UpdateImageButton").addEventListener("click", function() {
+    window.location.href ="<?php echo"./update.php?id=".$_GET["id"]."&category=".$_GET['category'] ?>"; 
+});
     // Add an event listener to the delete button
-        document.querySelector('nav .delete-button').addEventListener('click', function() {
+    document.getElementById("DeleteImageButton").addEventListener('click', function() {
         // Prompt a confirmation alert before deletion
         if (confirm("Are you sure you want to delete this artwork?")) {
             // If user confirms, redirect to the delete endpoint
             window.location.href = "./delete.php?url=<?php echo urlencode($url); ?>";
         }
         });
-    </script>
+   </script>
 
 
 </body>

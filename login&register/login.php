@@ -32,7 +32,7 @@ if (isset($_POST['login'])){
       header("location:../allphp/home.php");//he loged in ===> became an admin
       die();
     }else{
-      echo "<div style='background:#fc7a7a;margin-bottom: 5px;padding:2px 2px 2px 15px;border-radius: 10px;'>password invalid</div>";
+      echo "<div style='background:#fc7a7a;margin-bottom: 5px;padding:2px 2px 2px 15px;border-radius: 10px;'>invalid email or password</div>";
     }
   }else{
     echo "<div style='background:#fc7a7a;margin-bottom: 5px;padding:2px 2px 2px 15px;border-radius: 10px;'>account doesn't exist</div>";

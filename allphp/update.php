@@ -68,20 +68,6 @@ if (isset($_GET["id"]) && isset($_GET["category"])) {
 </head>
 
 <body style="background-image :url('../allphoto/contactbackground.jpg') ">
-    <section>
-        <nav>
-            <a href="./home.php">
-                <img src="../allphoto/logo.png" alt="">
-            </a>
-            
-            <div class="navigation">
-                <ul>
-                    <li><a class="active "href="">Update</a></li>
-                    <li><a href="./gallerypage.php">Undo</a></li>
-                </ul>
-            </div>
-        </nav>
-    </section>
     <div>
         <form method="POST" class="container">
             <h2 style="grid-column:1/3;grid-row:1/2;font-family:cursive;color:rgb(164, 7, 7);"><i> EDIT Artwork</i></h2>
@@ -146,10 +132,16 @@ if (isset($_GET["id"]) && isset($_GET["category"])) {
                 <input type="text" class="form-control" id="photo_artiste" name="photo_artiste" placeholder="Photo Artist" value="<?php echo $artwork['photo_artiste']; ?>">
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block" style="grid-column:1/3;grid-row:9/10">UPDATE</button>
+            <button id="undoButton" class="btn btn-primary btn-block" style="grid-column:1/2;grid-row:9/10;padding-right:20px;width: 18vh;margin-left: 1vh;">UNDO</button>
+            <button type="submit" class="btn btn-primary btn-block" style ="grid-column:2/3;grid-row:9/10;padding-left:20px;width: 18vh;margin-left: 3vh;">UPDATE</button>
         </form>
     </div>
-
+    
+    <script>
+    document.getElementById("undoButton").addEventListener("click", function() {
+    window.location.href = "./gallerypage.php"; 
+});
+   </script>
 </body>
 
 

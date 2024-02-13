@@ -19,6 +19,7 @@
             <ul>
                 <li><a href="../allphp/home.php">Home</a></li>
                 <li><a class="active" href="">Gallery</a></li>
+                <li><a href="./favorites.php">Favorites</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-phpuser/jeux.html">games</a></li>
                 <li><a  href="../login&register/login.php">login</a></li>

@@ -111,6 +111,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     }
 
+    //addartbutton
+    document.getElementById("addImageButton").addEventListener("click", function() {
+        window.location.href = "./create.php"; 
+    });
+
     // Search functionality
     searchInput.addEventListener("input", async () => {
         const searchTerm = searchInput.value.toLowerCase();

@@ -18,8 +18,9 @@
         <div class="navigation">
             <ul>
                 <li><a href="../allphp/home.php">Home</a></li>
-                <li><a class="active" href="">Gallery</a></li>
-                <li><a href="./favorites.php">Favorites</a></li>
+                <li><a href="./gallerypage.php">Gallery</a></li>
+                <li><a class="active">Favorites</a></li>
+                <li><a href="../allphp/create.php">Add Art</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-page/jeux.html">Games</a></li>
                 <li><a  href="../login&register/logout.php">Logout</a></li>
@@ -62,7 +63,7 @@
                 <input type="text" id="searchInput" placeholder="Looking for something...?">
                 
                 
-                <button id="addImageButton" >Add Art</button>
+                <!-- <button id="addImageButton" type="submit">Add Art</button> -->
             </div>
 
             <div class="gallery" id="gallery">
@@ -110,4 +111,3 @@ window.onscroll = function() {
     </script>
 </body>
 </html>
-
