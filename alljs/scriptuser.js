@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const idParam = encodeURIComponent(id); // Encode id
                 const categoryParam = encodeURIComponent(category); // Encode category
                 const allurl = `../allphpuser/IMG.php?url=${urlParam}&id=${idParam}&category=${categoryParam}`; // Construct URL with parameters
-                window.open(allurl, '_blank'); // Open new tab with the URL
+                window.open(allurl, '_self'); // Open new tab with the URL
             });
 
             const detailsContainer = document.createElement("div");

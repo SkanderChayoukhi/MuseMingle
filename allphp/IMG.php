@@ -263,22 +263,22 @@ if ($resultCheck > 0) {
     <div class="container2">
     <h3>Other listings from <?php echo $nn ?>:</h3>
     <div class="first" style="padding-left: 190px;padding-right: 0px;">
-        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[0]) . '&id=' . urlencode($related_image[1]) . '&category=' . urlencode($related_image[2]); ?>" target="_blank">
+        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[0]) . '&id=' . urlencode($related_image[1]) . '&category=' . urlencode($related_image[2]); ?>" target="_self">
             <img src="<?php echo $related_image[0]; ?>">
         </a>
     </div>
     <div class="second" style="padding-left: 0px;">
-        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[3]) . '&id=' . urlencode($related_image[4]) . '&category=' . urlencode($related_image[5]); ?>" target="_blank">
+        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[3]) . '&id=' . urlencode($related_image[4]) . '&category=' . urlencode($related_image[5]); ?>" target="_self">
             <img src="<?php echo $related_image[3]; ?>">
         </a>
     </div>
     <div class="third">
-        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[6]) . '&id=' . urlencode($related_image[7]) . '&category=' . urlencode($related_image[8]); ?>" target="_blank">
+        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[6]) . '&id=' . urlencode($related_image[7]) . '&category=' . urlencode($related_image[8]); ?>" target="_self">
             <img src="<?php echo $related_image[6]; ?>">
         </a>
     </div>
     <div class="four" style="padding-right: 100px;">
-        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[9]) . '&id=' . urlencode($related_image[10]) . '&category=' . urlencode($related_image[11]); ?>" target="_blank">
+        <a href="<?php echo 'IMG.php?url=' . urlencode($related_image[9]) . '&id=' . urlencode($related_image[10]) . '&category=' . urlencode($related_image[11]); ?>" target="_self">
             <img src="<?php echo $related_image[9]; ?>">
         </a>
     </div>
