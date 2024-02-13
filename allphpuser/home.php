@@ -25,7 +25,7 @@ $photography=mysqli_fetch_all($result3,MYSQLI_ASSOC );
     <title>Document</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="allcss/home.css">
+    <link rel="stylesheet" href="../allcss/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Protest+Revolution&display=swap" rel="stylesheet">
@@ -126,7 +126,7 @@ nav .navigation ul li a.active{
     transition: 1s ease;
     text-decoration: none;
     font-family: Protest Revolution;
-    color:  rgb(164, 7, 7)
+    color:  rgb(164, 7, 7);
 }
 .content0 h2{
   font-size: 50px;
