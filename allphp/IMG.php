@@ -202,8 +202,8 @@ if ($resultCheck > 0) {
                 <li><a href="./home.php">Home</a></li>
                 <li><a class="active" href="./gallerypage.php">Gallery</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
-                <li><a  href="../games-page/jeux.html">games</a></li>
-                <li><a  href="../login&register/logout.php">logout</a></li>
+                <li><a  href="../games-page/jeux.html">Games</a></li>
+                <li><a  href="../login&register/logout.php">Logout</a></li>
                 <li><a href="#demo" class="cart-icon">
                 <i class="fas fa-shopping-cart"></i>
                 <span id="cartCount" class="badge badge-pill badge-info">0</span>
@@ -219,10 +219,10 @@ if ($resultCheck > 0) {
             </div>
         </div>
         <div class="info">
-            <div>
-            <button id="UpdateImageButton" style="padding: 12px 18px; background-color: rgb(164, 7, 7);color: white;border: none;border-radius: 8px; cursor: pointer;margin-left: 66vh">Update</button>
-            <button id="DeleteImageButton" style="padding: 12px 18px; background-color: rgb(164, 7, 7);color: white;border: none;border-radius: 8px; cursor: pointer;margin-left: 66.3vh;margin-top: 1vh">Delete</button>
-            </div>
+        <div class="buttons" style="margin: 4vh;">
+         <button id="UpdateImageButton">Update</button>
+         <button id="DeleteImageButton" style="margin-left: 10vh;">Delete</button>
+        </div>
             <h1><?php echo $tt ?></h1>
             <div><p style="font-size: 20px;">by <i style="color:rgb(164, 7, 7);font-family:cursive;"><?php echo $nn ?></i></p></div>
             <p class="price"> <?php echo $pp ?> Dt</p>
@@ -246,9 +246,9 @@ if ($resultCheck > 0) {
                       </div>
                 </form>
 
-                <div class="buttons">
+                <!-- <div class="buttons">
                       <button class="add-to-favorites">Add to my favorites</button>
-                </div>
+                </div> -->
             </ul>
         </div>
     </div>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +7,30 @@
   <link rel="stylesheet" href="signup.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Protest+Revolution&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Protest+Revolution&display=swap" rel="stylesheet">
+  <style>
+    .password-container {
+        position: relative;
+    }
+    .password-toggle {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+    .repassword-container {
+        position: relative;
+    }
+    .repassword-toggle {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+  </style>
 </head>
 <body style="background-image :url('../allphoto/loginregister.jpg'); background-position: fixed;
 background-size: cover; ">
@@ -77,18 +96,49 @@ if (isset($_POST['submit'])){
     <div class="mb-3">
       <input style="background-color: rgba(164, 164, 164, 0.975); border: none;" type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail: name@example.com">
     </div>
-    <div class="mb-3">
-      <input type="password" class="form-control" name="password" style="background-color: rgba(164, 164, 164, 0.975); border: none;", id="exampleInputPassword1" placeholder="your password">
+    <div class="mb-3 password-container">
+      <input type="password" class="form-control" name="password" style="background-color: rgba(164, 164, 164, 0.975); border: none;", id="exampleInputPassword1" placeholder="your password" minlength="8">
+      <span class="password-toggle" onclick="togglePasswordVisibility1()" >Show</span>
     </div>
-    <div class="mb-3">
-      <input style="background-color: rgba(164, 164, 164, 0.975); border: none;" name="password2" type="password" class="form-control" id="exampleInputEmail1" placeholder="repeat your password">
+    <div class="mb-3 repassword-container">
+      <input style="background-color: rgba(164, 164, 164, 0.975); border: none;" name="password2" type="password" class="form-control" id="exampleInputPassword2" placeholder="repeat your password" minlength="8">
+      <span class="repassword-toggle" onclick="togglePasswordVisibility2()" >Show</span>
     </div>
     <input type="submit" name="submit" class="btn btn-outline-dark" style="width: 100%; color: white; border: 2px solid white;" value="sign up">
     <div class="signup-link">
+      <br>
       <p style="color: #fff;">you already have an account ?</p>
       <button onclick="window.location.href='login.php'" type="button" style="color: white; border:2px solid white;" class="btn btn-outline-dark">login</button>
     </div>
   </form>
   </div>
-  </body>
-  </html>
+
+  <script>
+    function togglePasswordVisibility1() {
+        var passwordInput = document.getElementById("exampleInputPassword1");
+        var passwordToggle = document.querySelector(".password-toggle");
+        
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordToggle.textContent = "Hide";
+        } else {
+            passwordInput.type = "password";
+            passwordToggle.textContent = "Show";
+        }
+    }
+    function togglePasswordVisibility2() {
+        var passwordInput = document.getElementById("exampleInputPassword2");
+        var passwordToggle = document.querySelector(".repassword-toggle");
+        
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordToggle.textContent = "Hide";
+        } else {
+            passwordInput.type = "password";
+            passwordToggle.textContent = "Show";
+        }
+    }
+  </script>
+
+</body>
+</html>

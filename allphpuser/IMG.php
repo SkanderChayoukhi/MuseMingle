@@ -203,8 +203,8 @@ if ($resultCheck > 0) {
                 <li><a href="./home.php">Home</a></li>
                 <li><a class="active" href="./gallerypage.php">Gallery</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
-                <li><a  href="../games-phpuser/jeux.html">games</a></li>
-                <li><a  href="../login&register/login.php">login</a></li>
+                <li><a  href="../games-phpuser/jeux.html">Games</a></li>
+                <li><a  href="../login&register/login.php">Login</a></li>
                 <li><a href="#demo" class="cart-icon">
                 <i class="fas fa-shopping-cart"></i>
                 <span id="cartCount" class="badge badge-pill badge-info">0</span>
@@ -246,9 +246,9 @@ if ($resultCheck > 0) {
                       </div>
                     </form>
                  
-                <div class="buttons">
+                <!-- <div class="buttons">
                       <button class="add-to-favorites">Add to my favorites</button>
-                </div>
+                </div> -->
             </ul>
         </div>
     </div>
