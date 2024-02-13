@@ -1,4 +1,36 @@
 <?php
+session_start();
+
+// Initialize cart if not exists
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+// Function to add item to cart
+function addToCart($item) {
+    $_SESSION['cart'][] = $item;
+}
+
+// Check if form submitted and add item to cart
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addItem'])) {
+    // Sanitize and validate input (not shown in this example)
+    $itemName = $_POST['itemName'];
+    $itemPrice = $_POST['itemPrice'];
+    // Add item to cart
+    addToCart(['name' => $itemName, 'price' => $itemPrice]);
+}
+
+// Function to get cart count
+function getCartCount() {
+    // Return cart count
+    echo count($_SESSION['cart']);
+    exit();
+}
+
+// Check if AJAX request to get cart count
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getCartCount'])) {
+    getCartCount();
+}
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
@@ -111,6 +143,54 @@ if ($resultCheck > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artwork Page</title>
     <link rel="stylesheet" href="../allcss/PhotodDescription.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Protest+Revolution&display=swap" rel="stylesheet">
+ 
+
+    <style>
+    .cart-icon {
+        color: #333; /* Change color as needed */
+        font-size: 20px; /* Adjust font size as needed */
+    }
+    .modal {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0; right: 0;
+  bottom: 0; left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(77, 77, 77, .7);
+  transition: all .4s;
+}
+.modal:target {
+  visibility: visible;
+  opacity: 1;
+}
+.modal_content {
+  border-radius: 4px;
+  position: relative;
+  width: 500px;
+  max-width: 90%;
+  background: white;
+  padding: 1.5em 2em;
+}
+
+.modal_close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: grey;
+  text-decoration: none;
+}
+  </style>
 </head>
 <body>
     <section>
@@ -125,6 +205,10 @@ if ($resultCheck > 0) {
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-phpuser/jeux.html">games</a></li>
                 <li><a  href="../login&register/login.php">login</a></li>
+                <li><a href="#demo" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cartCount" class="badge badge-pill badge-info">0</span>
+                </a></li>
                 
                 
             </ul>
@@ -151,9 +235,17 @@ if ($resultCheck > 0) {
                 <li>Shipping:<?php echo $sh ?></li>
            
                 <br>
-                <div class="buttons">
-                      <button class="add-to-cart">Add to Basket</button>
-                 </div>
+                
+                      <form method="post">
+                        <input type="hidden" name="addItem">
+                        <!-- Item details -->
+                        <input type="hidden" name="itemName" value="<?php echo $tt; ?>">
+                        <input type="hidden" name="itemPrice" value="<?php echo $pp; ?>">
+                        <div class="buttons">
+                        <button type="submit" class="btn btn-primary add-to-cart">Add to Basket</button>
+                      </div>
+                    </form>
+                 
                 <div class="buttons">
                       <button class="add-to-favorites">Add to my favorites</button>
                 </div>
@@ -237,15 +329,150 @@ if ($resultCheck > 0) {
             }
         }
 
-    // Add an event listener to the delete button
-        document.querySelector('nav .delete-button').addEventListener('click', function() {
-        // Prompt a confirmation alert before deletion
-        if (confirm("Are you sure you want to delete this artwork?")) {
-            // If user confirms, redirect to the delete endpoint
-            window.location.href = "./delete.php?url=<?php echo urlencode($url); ?>";
+
+   
+
+<!-- Replace the existing event listener for the "Add to Basket" button -->
+</script>
+
+<script>
+    // Function to add item to cart
+function addToCart(item) {
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+    // Define the request method, URL, and asynchronous flag
+    xhr.open('POST', '<?php echo $_SERVER['PHP_SELF']; ?>', true); // Use PHP_SELF to send the request to the same page
+    // Set the request header to specify form data
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // Define the onload function to handle the response
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            // On successful response, update the cart count
+            updateCartCount();
+        } else {
+            // On error, display an alert message
+            alert('Failed to add item to cart. Please try again later.');
         }
-        });
+    };
+    // Define the onerror function to handle connection errors
+    xhr.onerror = function() {
+        alert('Connection error. Please try again later.');
+    };
+    // Encode the item object as a URL-encoded string
+    var formData = 'addItem=true&itemName=' + encodeURIComponent(item.name) + '&itemPrice=' + encodeURIComponent(item.price);
+    // Send the request with the form data
+    xhr.send(formData);
+}
+
+// Function to retrieve and update cart count
+function updateCartCount() {
+    // Fetch the cart count span element
+    var cartCountSpan = document.getElementById('cartCount');
+    // Fetch the cart count from the server-side script
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '<?php echo $_SERVER['PHP_SELF']; ?>?getCartCount=true', true); // Use PHP_SELF to send the request to the same page
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            // Log the response text for debugging
+            console.log('Response text:', xhr.responseText);
+            // Update the cart count span element with the retrieved count
+            cartCountSpan.innerText = xhr.responseText;
+        } else {
+            // On error, display an alert message
+            alert('Failed to retrieve cart count. Please try again later.');
+        }
+    };
+    xhr.onerror = function() {
+        alert('Connection error. Please try again later.');
+    };
+    xhr.send();
+}
+
+// Update cart count on page load
+updateCartCount();
+
+// Add event listener to "Add to Cart" button
+var addToCartButton = document.querySelector('.add-to-cart');
+if (addToCartButton) {
+    addToCartButton.addEventListener('click', function(event) {
+        // Prevent default form submission
+        event.preventDefault();
+        // Fetch item details from hidden input fields
+        var itemName = document.querySelector('input[name="itemName"]').value;
+        var itemPrice = document.querySelector('input[name="itemPrice"]').value;
+        // Add item to cart
+        addToCart({ name: itemName, price: itemPrice });
+        window.location.reload();
+    });
+} else {
+    console.error('No element found with class "add-to-cart"');
+}
+
+</script>
+<div id="demo" class="modal">
+  <div class="modal_content">
+  <?php
+
+
+// Initialize cart if not exists
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+// Function to remove item from cart
+function removeFromCart($index) {
+    if (isset($_SESSION['cart'][$index])) {
+        unset($_SESSION['cart'][$index]);
+    }
+}
+
+// Check if action is to remove item from cart
+if (isset($_GET['action']) && $_GET['action'] === 'remove' && isset($_GET['index'])) {
+    $index = $_GET['index'];
+    removeFromCart($index);
+    // Redirect back to cart page to reflect changes
+    header('Location: cart.php');
+    exit;
+}
+?>
+    <h1 style="text-align: center; font-size:40px;font-family:Protest Revolution;color:rgb(164, 7, 7)">Shopping Cart</h1><br>
+    <div class="cart-items">
+        <?php if (empty($_SESSION['cart'])) : ?>
+            <p>Your cart is empty.</p>
+        <?php else : ?>
+            <?php foreach ($_SESSION['cart'] as $index => $item) : ?>
+                <div class="item">
+                    <button class="delete-btn" onclick="removeItem(<?php echo $index; ?>)">❌ </button>
+                    <span class="name"><?php echo $item['name']; ?></span>
+                    <span class="price"><?php echo $item['price']; ?>DT</span>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+
+    <script>
+        function removeItem(index) {
+            if (confirm("Are you sure you want to remove this item from the cart?")) {
+                // Send an AJAX request to remove the item from the cart
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'cart.php?action=remove&index=' + index, true);
+                xhr.onload = function () {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // Reload the page to reflect the changes
+                        window.location.reload();
+                    } else {
+                        alert('Failed to remove item from cart.');
+                    }
+                };
+                xhr.send();
+            }
+        }
     </script>
+    <a href="#" class="modal_close">&times;</a>
+  </div>
+</div>
+
+
 
 
 </body>

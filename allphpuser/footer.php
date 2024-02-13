@@ -304,7 +304,7 @@ body .footer .content > div .image {
       <p style="color:black">Plongez dans notre univers artistique, où chaque création raconte une histoire et chaque détail est une invitation à l'émerveillement</p>
       </div>
     <div class="footerright">
-      <p>©2024 Our Creaters: <br> Ahmed Majid Salhi <br> arij <br>youssef <br>rana <br>narjess</p>
+     <p>©2024 Our Creaters: <br> Ahmed Majid Salhi <br> Arji Ezzahi <br> Youssef Dhouib <br> Rana Chouchen <br> Narjess HadjMohamed <br> Nour Taieb</p>
       <br>
       <p></p>
     </div>

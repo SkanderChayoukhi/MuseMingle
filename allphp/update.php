@@ -69,7 +69,7 @@ if (isset($_GET["id"]) && isset($_GET["category"])) {
 
 <body style="background-image :url('../allphoto/contactbackground.jpg') ">
     <div>
-        <form method="POST" class="container">
+      <form method="POST" class="container" id="editForm">
             <h2 style="grid-column:1/3;grid-row:1/2;font-family:cursive;color:rgb(164, 7, 7);"><i> EDIT Artwork</i></h2>
             <div class="form-group" style="grid-column:1/3;grid-row:2/3;padding-right:20px;">
                 <label for="type"></label>
@@ -138,10 +138,41 @@ if (isset($_GET["id"]) && isset($_GET["category"])) {
     </div>
     
     <script>
-    document.getElementById("undoButton").addEventListener("click", function() {
-    window.location.href = "./gallerypage.php"; 
-});
-   </script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var originalFormValues = {};
+            var form = document.getElementById("editForm");
+            var formInputs = form.querySelectorAll("input, select");
+            formInputs.forEach(function(input) {
+                originalFormValues[input.name] = input.value;
+            });
+            
+            document.getElementById("undoButton").addEventListener("click", function() {
+                var changesDetected = false;
+                
+                // Check if there are any changes
+                for (var fieldName in originalFormValues) {
+                    var input = form.querySelector("[name='" + fieldName + "']");
+                    if (input && input.value !== originalFormValues[fieldName]) {
+                        changesDetected = true;
+                        break;
+                    }
+                }
+                
+                // If changes are detected, revert form fields to original values and redirect
+                if (changesDetected) {
+                    for (var fieldName in originalFormValues) {
+                        var input = form.querySelector("[name='" + fieldName + "']");
+                        if (input) {
+                            input.value = originalFormValues[fieldName];
+                        }
+                    }
+                } else {
+                    // If no changes, directly redirect to the gallery page
+                    window.location.href = ".gallerypage.php";
+                }
+            });
+        });
+    </script>
 </body>
 
 
