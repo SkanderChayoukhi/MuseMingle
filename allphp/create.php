@@ -68,7 +68,7 @@ mysqli_close($conn);
 </head>
 
 <body style="background-image :url('../allphoto/contactbackground.jpg') ">
-    <div >
+    <div>
         <form method="POST" class="container">
         <h2 style ="grid-column:1/3;grid-row:1/2;font-family:cursive;color:rgb(164, 7, 7);"><i> ADD A New Art</i></h2>
             <div class="form-group" style="grid-column:1/3;grid-row:2/3;padding-right:20px;">
@@ -80,7 +80,6 @@ mysqli_close($conn);
                     <option value="drawings">Drawings</option>
                 </select>
             </div>
-            <!-- Removed ID input as it may not be needed -->
             <div class="form-group" style ="grid-column:1/2;grid-row:3/4;padding-right:20px;">
                 <label for="title"></label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Title">
@@ -133,16 +132,17 @@ mysqli_close($conn);
                 <label for="photo_artiste"></label>
                 <input type="text" class="form-control" id="photo_artiste" name="photo_artiste" placeholder="Photo Artist">
             </div>
-            <button id="undoButton" class="btn btn-primary btn-block" style="grid-column:1/2;grid-row:9/10;padding-right:20px;width: 18vh;margin-left: 1vh;">UNDO</button>
             <button type="submit" class="btn btn-primary btn-block" style ="grid-column:2/3;grid-row:9/10;padding-left:20px;width: 18vh;margin-left: 3vh;">ADD</button>
+            <button id="undoButton" class="btn btn-primary btn-block" style="grid-column:1/2;grid-row:9/10;padding-right:20px;width: 18vh;margin-left: 1vh;">UNDO</button>
         </form>
     </div>
     
     <script>
-    document.getElementById("undoButton").addEventListener("click", function() {
-    window.location.href = "./gallerypage.php"; 
-});
-   </script>
+        document.getElementById("undoButton").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            window.location.href = "./gallerypage.php";
+        });
+    </script>
    
 </body>
 </html>

@@ -146,7 +146,7 @@ if (isset($_GET["id"]) && isset($_GET["category"])) {
                 originalFormValues[input.name] = input.value;
             });
             
-            document.getElementById("undoButton").addEventListener("click", function() {
+            document.getElementById("undoButton").addEventListener("click", function(event) {
                 var changesDetected = false;
                 
                 // Check if there are any changes
@@ -168,7 +168,8 @@ if (isset($_GET["id"]) && isset($_GET["category"])) {
                     }
                 } else {
                     // If no changes, directly redirect to the gallery page
-                    window.location.href = ".gallerypage.php";
+                    event.preventDefault(); // Prevent default form submission
+                    window.location.href = "./gallerypage.php";
                 }
             });
         });
