@@ -329,10 +329,6 @@ if ($resultCheck > 0) {
             }
         }
 
-
-   
-
-<!-- Replace the existing event listener for the "Add to Basket" button -->
 </script>
 
 <script>
