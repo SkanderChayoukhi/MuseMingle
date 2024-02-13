@@ -82,55 +82,55 @@ mysqli_close($conn);
             </div>
             <div class="form-group" style ="grid-column:1/2;grid-row:3/4;padding-right:20px;">
                 <label for="title"></label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
             </div>
             <div class="form-group" style ="grid-column:2/3;grid-row:2/3;padding-left:20px">
                 <label for="url_image"></label>
-                <input type="text" class="form-control" id="url_image" name="url_image" placeholder="URL">
+                <input type="text" class="form-control" id="url_image" name="url_image" placeholder="URL" required>
             </div>
             <div class="form-group" style ="grid-column:2/3;grid-row:3/4;padding-left:20px">
                 <label for="price"></label>
-                <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+                <input type="text" class="form-control" id="price" name="price" placeholder="Price" required>
             </div>
             <div class="form-group" style ="grid-column:1/2;grid-row:4/5;padding-right:20px;">
                 <label for="year"></label>
-                <input type="text" class="form-control" id="year" name="year" placeholder="Year">
+                <input type="text" class="form-control" id="year" name="year" placeholder="Year" required>
             </div>
             <div class="form-group" style ="grid-column:2/3;grid-row:4/5;padding-left:20px">
                 <label for="size"></label>
-                <input type="text" class="form-control" id="size" name="size" placeholder="Size">
+                <input type="text" class="form-control" id="size" name="size" placeholder="Size" required>
             </div>
           <div class="form-group" style ="grid-column:1/2;grid-row:5/6;padding-right:20px;">
                 <label for="signed"></label>
-                <input type="text" class="form-control" id="signed" name="signed" placeholder="Signed">
+                <input type="text" class="form-control" id="signed" name="signed" placeholder="Signed" required>
             </div>
             <div class="form-group"style ="grid-column:2/3;grid-row:5/6;padding-left:20px;">
                 <label for="frame"></label>
-                <input type="text" class="form-control" id="frame" name="frame" placeholder="Frame">
+                <input type="text" class="form-control" id="frame" name="frame" placeholder="Frame" required>
             </div>
             <div class="form-group"style ="grid-column:1/2;grid-row:6/7;padding-right:20px;">
                 <label for="style"></label>
-                <input type="text" class="form-control" id="style" name="style" placeholder="Style">
+                <input type="text" class="form-control" id="style" name="style" placeholder="Style" required>
             </div>
             <div class="form-group" style ="grid-column:2/3;grid-row:6/7;padding-left:20px">
                 <label for="subject"></label>
-                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
             </div>
             <div class="form-group" style ="grid-column:1/2;grid-row:7/8;padding-right:20px;">
                 <label for="shipping"></label>
-                <input type="text" class="form-control" id="shipping" name="shipping" placeholder="Shipping">
+                <input type="text" class="form-control" id="shipping" name="shipping" placeholder="Shipping" required>
             </div>
             <div class="form-group"style ="grid-column:2/3;grid-row:7/8;padding-left:20px">
                 <label for="nomArtist"></label>
-                <input type="text" class="form-control" id="nomArtist" name="nomArtist" placeholder="Name Artist">
+                <input type="text" class="form-control" id="nomArtist" name="nomArtist" placeholder="Name Artist" required>
             </div>
             <div class="form-group"style ="grid-column:2/3;grid-row:8/9;padding-left:20px">
                 <label for="descriptionArtist"></label>
-                <input type="text" class="form-control" id="descriptionArtist" name="descriptionArtist" placeholder="Description Artist">
+                <input type="text" class="form-control" id="descriptionArtist" name="descriptionArtist" placeholder="Description Artist" required>
             </div>
             <div class="form-group"style ="grid-column:1/2;grid-row:8/9;padding-right:20px;">
                 <label for="photo_artiste"></label>
-                <input type="text" class="form-control" id="photo_artiste" name="photo_artiste" placeholder="Photo Artist">
+                <input type="text" class="form-control" id="photo_artiste" name="photo_artiste" placeholder="Photo Artist" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block" style ="grid-column:2/3;grid-row:9/10;padding-left:20px;width: 18vh;margin-left: 3vh;">ADD</button>
             <button id="undoButton" class="btn btn-primary btn-block" style="grid-column:1/2;grid-row:9/10;padding-right:20px;width: 18vh;margin-left: 1vh;">UNDO</button>
