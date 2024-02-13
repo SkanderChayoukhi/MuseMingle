@@ -85,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getCartCount'])) {
             <ul>
                 <li><a href="../allphp/home.php">Home</a></li>
                 <li><a class="active" href="">Gallery</a></li>
-                <li><a href="./favorites.php">Favorites</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-page/jeux.html">Games</a></li>
                 <li><a  href="../login&register/logout.php">Logout</a></li>

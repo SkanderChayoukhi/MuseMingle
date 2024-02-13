@@ -84,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getCartCount'])) {
             <ul>
                 <li><a href="../allphp/home.php">Home</a></li>
                 <li><a class="active" href="">Gallery</a></li>
-                <li><a href="./favorites.php">Favorites</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
                 <li><a  href="../games-phpuser/jeux.html">Games</a></li>
                 <li><a  href="../login&register/login.php">Login</a></li>
@@ -244,8 +243,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'remove' && isset($_GET['index
             <?php foreach ($_SESSION['cart'] as $index => $item) : ?>
                 <div class="item">
                     <button class="delete-btn" onclick="removeItem(<?php echo $index; ?>)">❌ </button>
-                    <span class="name"><?php echo $item['name']; ?></span>
-                    <span class="price"><?php echo $item['price']; ?>DT</span>
+                    <span class="name">NAME: <?php echo $item['name']; ?></span><br>
+                    <span class="price" style="margin-left: 40px; font-size:20px;font-weight:200">PRICE: <?php echo $item['price']; ?>DT</span><br><br>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
