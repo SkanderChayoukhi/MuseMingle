@@ -550,7 +550,7 @@ nav .navigation ul li a.active{
 
 
 <!-----------------------------------3rd section--------------------------------->
-<div class="title2">
+<div class="title1">
     <h1>ABOUT US</h1>
 </div>
 <div class="update">
