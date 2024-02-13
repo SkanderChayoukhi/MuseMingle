@@ -329,14 +329,7 @@ if ($resultCheck > 0) {
             }
         }
 
-    // Add an event listener to the delete button
-        document.querySelector('nav .delete-button').addEventListener('click', function() {
-        // Prompt a confirmation alert before deletion
-        if (confirm("Are you sure you want to delete this artwork?")) {
-            // If user confirms, redirect to the delete endpoint
-            window.location.href = "./delete.php?url=<?php echo urlencode($url); ?>";
-        }
-        });
+
    
 
 <!-- Replace the existing event listener for the "Add to Basket" button -->
@@ -409,6 +402,7 @@ if (addToCartButton) {
         var itemPrice = document.querySelector('input[name="itemPrice"]').value;
         // Add item to cart
         addToCart({ name: itemName, price: itemPrice });
+        window.location.reload();
     });
 } else {
     console.error('No element found with class "add-to-cart"');
@@ -449,8 +443,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'remove' && isset($_GET['index
             <?php foreach ($_SESSION['cart'] as $index => $item) : ?>
                 <div class="item">
                     <button class="delete-btn" onclick="removeItem(<?php echo $index; ?>)">❌ </button>
-                    <span class="name">NAME: <?php echo $item['name']; ?></span><br>
-                    <span class="price" style="margin-left: 25px">PRICE: <?php echo $item['price']; ?> DNT</span><br><br>
+                    <span class="name"><?php echo $item['name']; ?></span>
+                    <span class="price"><?php echo $item['price']; ?>DT</span>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>

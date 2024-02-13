@@ -68,27 +68,13 @@ mysqli_close($conn);
 </head>
 
 <body style="background-image :url('../allphoto/contactbackground.jpg') ">
-    <section>
-    <nav>
-        <a href="./home.php">
-            <img src="../allphoto/logo.png" alt="">
-        </a>
-        
-        <div class="navigation">
-            <ul>
-                <li><a class="active" href="">Add Art</a></li>
-                <li><a href="./gallerypage.php">Undo</a></li>
-            </ul>
-        </div>
-    </nav>
-    </section>
     <div >
         <form method="POST" class="container">
         <h2 style ="grid-column:1/3;grid-row:1/2;font-family:cursive;color:rgb(164, 7, 7);"><i> ADD A New Art</i></h2>
             <div class="form-group" style="grid-column:1/3;grid-row:2/3;padding-right:20px;">
                 <label for="type"></label>
                 <select class="form-control-type" id="type" name="type">
-                    <option value="" disabled selected>Select category</option>
+                    <option value="" disabled >Select category</option>
                     <option value="paintings">Paintings</option>
                     <option value="photography">Photography</option>
                     <option value="drawings">Drawings</option>
@@ -147,9 +133,16 @@ mysqli_close($conn);
                 <label for="photo_artiste"></label>
                 <input type="text" class="form-control" id="photo_artiste" name="photo_artiste" placeholder="Photo Artist">
             </div>
-            <button type="submit" class="btn btn-primary btn-block"style ="grid-column:1/3;grid-row:9/10">ADD</button>
+            <button id="undoButton" class="btn btn-primary btn-block" style="grid-column:1/2;grid-row:9/10;padding-right:20px;width: 18vh;margin-left: 1vh;">UNDO</button>
+            <button type="submit" class="btn btn-primary btn-block" style ="grid-column:2/3;grid-row:9/10;padding-left:20px;width: 18vh;margin-left: 3vh;">ADD</button>
         </form>
     </div>
+    
+    <script>
+    document.getElementById("undoButton").addEventListener("click", function() {
+    window.location.href = "./gallerypage.php"; 
+});
+   </script>
+   
 </body>
-
 </html>

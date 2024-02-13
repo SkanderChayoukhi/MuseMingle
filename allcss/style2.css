@@ -37,7 +37,7 @@ nav .navigation ul li a{
     font-size: 17px;
     font-weight: 500 ;
     transition: 0.3s ease;
-    font-family:  sans-serif ;
+    font-family: 'poppins', sans-serif ;
 }
 nav .navigation ul li select{
     background-color: white;
@@ -139,7 +139,7 @@ nav .navigation ul li a.active{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 130vh;
+    height: 110vh;
     background-color: #f0f0f0;
 }
 
@@ -149,7 +149,6 @@ nav .navigation ul li a.active{
     gap: 30px; /* Increased gap between images */
     max-width: 3000px; /* Increased max-width */
     margin: 0 auto;
-    height: 100vh;
 }
 
 .section2 .gallery-controls {
@@ -163,7 +162,7 @@ nav .navigation ul li a.active{
     padding: 12px; /* Increased padding */
     border: 2px solid #ccc; /* Increased border width */
     border-radius: 50px; /* Increased border-radius */
-     margin-right: 145vh ; /*Increased margin-right (139vh) */
+     margin-right: 139vh ; /*Increased margin-right (139vh) */
 }
 
 .section2 #addImageButton {
@@ -207,7 +206,7 @@ nav .navigation ul li a.active{
 
 .section2 .image-details {
     position: absolute;
-    bottom: 40px;
+    bottom: 0;
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.7);

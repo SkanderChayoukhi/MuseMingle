@@ -5,6 +5,17 @@ session_start();
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
+// Function to get cart count
+function getCartCount() {
+    // Return cart count
+    echo count($_SESSION['cart']);
+    exit();
+}
+
+// Check if AJAX request to get cart count
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getCartCount'])) {
+    getCartCount();
+}
 
 ?>
 <!DOCTYPE html>
@@ -73,9 +84,10 @@ if (!isset($_SESSION['cart'])) {
             <ul>
                 <li><a href="../allphp/home.php">Home</a></li>
                 <li><a class="active" href="">Gallery</a></li>
+                <li><a href="./favorites.php">Favorites</a></li>
                 <li><a  href="./contact.php">Contact us</a></li>
-                <li><a  href="../games-phpuser/jeux.html">games</a></li>
-                <li><a  href="../login&register/login.php">login</a></li>
+                <li><a  href="../games-phpuser/jeux.html">Games</a></li>
+                <li><a  href="../login&register/login.php">Login</a></li>
                 <li>
                 <a href="#demo" class="cart-icon">
                 <i class="fas fa-shopping-cart"></i>
@@ -146,9 +158,8 @@ if (!isset($_SESSION['cart'])) {
             iconContainer.classList.add("clicked");
         });
     });
-    // Update cart count on page load
-    updateCartCount();
 });
+
 
 // Function to retrieve and update cart count from server
 function updateCartCount() {
@@ -157,10 +168,11 @@ function updateCartCount() {
     // Create a new XMLHttpRequest object
     var xhr = new XMLHttpRequest();
     // Define the request method, URL, and asynchronous flag
-    xhr.open('GET', 'your_php_script_url_here?getCartCount=true', true);
+    xhr.open('GET', '<?php echo $_SERVER['PHP_SELF']; ?>?getCartCount=true', true);
     // Define the onload function to handle the response
     xhr.onload = function() {
         if (xhr.status >= 200 && xhr.status < 400) {
+            console.log('Response text:', xhr.responseText);
             // Update the cart count span element with the retrieved count
             cartCountSpan.innerText = xhr.responseText;
         }
@@ -232,8 +244,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'remove' && isset($_GET['index
             <?php foreach ($_SESSION['cart'] as $index => $item) : ?>
                 <div class="item">
                     <button class="delete-btn" onclick="removeItem(<?php echo $index; ?>)">❌ </button>
-                    <span class="name">NAME: <?php echo $item['name']; ?></span><br>
-                    <span class="price" style="margin-left: 25px">PRICE: <?php echo $item['price']; ?> DNT</span><br><br>
+                    <span class="name"><?php echo $item['name']; ?></span>
+                    <span class="price"><?php echo $item['price']; ?>DT</span>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
